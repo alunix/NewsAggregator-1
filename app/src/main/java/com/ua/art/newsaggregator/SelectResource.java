@@ -16,6 +16,7 @@ public class SelectResource extends Activity {
     private ArrayList<TableRow> tableRowsArr_SelectSours;
     private ArrayList<Button> buttonViewsArr_SelectSours;
 
+    //TODO надо только раз чтоб загружалось (при перевороте доавляются кнопки)
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +25,6 @@ public class SelectResource extends Activity {
 
         tableLayout_SelectSours = (TableLayout)findViewById(R.id.TableLayout_SelectSours);
         tableRowsArr_SelectSours = new ArrayList<>();
-
-        //TableRow row = new TableRow(this);
 
         // add Base to News
         BaseSourse.addBaseNews();
@@ -55,13 +54,13 @@ public class SelectResource extends Activity {
                             (TableRow.LayoutParams) button.getLayoutParams();
                     params.column = i;
                     params.span = 1;
-                    params.setMargins(2, 2, 2, 2);
-                    params.width = TableRow.LayoutParams.MATCH_PARENT;
+                    params.setMargins(3, 3, 3, 3);
+                    params.width = TableRow.LayoutParams.WRAP_CONTENT;
                     params.height = TableRow.LayoutParams.WRAP_CONTENT;
                     params.gravity = 9;
-                    button.setPadding(2, 2, 2, 2);
+                    button.setPadding(1, 1, 1, 1);
                 }
-                tableRowsArr_SelectSours.get(j).setBackgroundColor(Color.BLACK);
+                //tableRowsArr_SelectSours.get(j).setBackgroundColor(Color.BLACK);
             }
 
             tableLayout_SelectSours.addView(tableRowsArr_SelectSours.get(j),
