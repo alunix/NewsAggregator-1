@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class BaseSourse {
 
-    private static ArrayList<String> idSelectSourceArr = new ArrayList<>();       // id Source
-    private static ArrayList<String> nameSelectSourceArr = new ArrayList<>();       // name Source
-    private static ArrayList<String> imgSelectSourceArr = new ArrayList<>();    // img-logo Source
+    public static ArrayList<String> idSelectSourceArr = new ArrayList<>();       // id Source
+    public static ArrayList<String> nameSelectSourceArr = new ArrayList<>();       // name Source
+    public static ArrayList<String> imgSelectSourceArr = new ArrayList<>();    // img-logo Source
 
     public BaseSourse() {
 
@@ -54,31 +54,31 @@ public class BaseSourse {
         imgSelectSourceArr.add("@drawable/abc_btn_switch_to_on_mtrl_00012");
     }
 
-    public static int sizeSourceArr() {
-        return idSelectSourceArr.size();
-    }
-
-    public static ArrayList<String> getIdSelectSourceArr() {
-        return idSelectSourceArr;
-    }
-
-    public static void setIdSelectSourceArr(ArrayList<String> idSelectSourceArr) {
-        BaseSourse.idSelectSourceArr = idSelectSourceArr;
-    }
-
-    public static ArrayList<String> getNameSelectSourceArr() {
-        return nameSelectSourceArr;
-    }
-
-    public static void setNameSelectSourceArr(ArrayList<String> nameSelectSourceArr) {
-        BaseSourse.nameSelectSourceArr = nameSelectSourceArr;
-    }
-
-    public static ArrayList<String> getImgSelectSourceArr() {
-        return imgSelectSourceArr;
-    }
-
-    public static void setImgSelectSourceArr(ArrayList<String> imgSelectSourceArr) {
-        BaseSourse.imgSelectSourceArr = imgSelectSourceArr;
-    }
+//    public static int sizeSourceArr() {
+//        return idSelectSourceArr.size();
+//    }
+//
+//    public static ArrayList<String> getIdSelectSourceArr() {
+//        return idSelectSourceArr;
+//    }
+//
+//    public static void setIdSelectSourceArr(ArrayList<String> idSelectSourceArr) {
+//        BaseSourse.idSelectSourceArr = idSelectSourceArr;
+//    }
+//
+//    public static ArrayList<String> getNameSelectSourceArr() {
+//        return nameSelectSourceArr;
+//    }
+//
+//    public static void setNameSelectSourceArr(ArrayList<String> nameSelectSourceArr) {
+//        BaseSourse.nameSelectSourceArr = nameSelectSourceArr;
+//    }
+//
+//    public static ArrayList<String> getImgSelectSourceArr() {
+//        return imgSelectSourceArr;
+//    }
+//
+//    public static void setImgSelectSourceArr(ArrayList<String> imgSelectSourceArr) {
+//        BaseSourse.imgSelectSourceArr = imgSelectSourceArr;
+//    }
 }

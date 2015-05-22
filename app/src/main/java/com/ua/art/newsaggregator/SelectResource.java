@@ -29,7 +29,7 @@ public class SelectResource extends Activity {
         // add Base to News
         BaseSourse.addBaseNews();
         // To add TableRow in TableLayout
-        float tempIdSize = (float) BaseSourse.sizeSourceArr() / 3;
+        float tempIdSize = (float) BaseSourse.idSelectSourceArr.size() / 3;
         if ((int) tempIdSize < tempIdSize)       // Quantity TableRow / количество TableRow
             tempIdSize = (int) tempIdSize + 1;
         else
@@ -43,9 +43,9 @@ public class SelectResource extends Activity {
         for (int j = 0; j < tableRowsArr_SelectSours.size(); j++) {
             //tableLayout_SelectSours.addView(tableRowsArr_SelectSours.get(j));
             for (int i = 0; i < 4; i++, idSizeSourceArr++) {
-                if (BaseSourse.getIdSelectSourceArr().size() > idSizeSourceArr) {
+                if (BaseSourse.idSelectSourceArr.size() > idSizeSourceArr) {
                     Button button = new Button(this);
-                    button.setText(BaseSourse.getNameSelectSourceArr().get(idSizeSourceArr)); //Set to any meaningful text
+                    button.setText(BaseSourse.nameSelectSourceArr.get(idSizeSourceArr)); //Set to any meaningful text
                     button.setBackgroundColor(Color.GREEN);
 
                     tableRowsArr_SelectSours.get(j).addView(button); //Attach TextView to its parent (row)
