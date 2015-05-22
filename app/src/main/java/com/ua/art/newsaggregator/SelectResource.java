@@ -2,19 +2,22 @@ package com.ua.art.newsaggregator;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import java.util.ArrayList;
 
-public class SelectResource extends Activity {
+public class SelectResource extends Activity implements View.OnClickListener {
     private TableLayout tableLayout_SelectSours;
     private ArrayList<TableRow> tableRowsArr_SelectSours;
     private ArrayList<Button> buttonViewsArr_SelectSours;
+    private Button button_SelectSours;
 
     //TODO надо только раз чтоб загружалось (при перевороте доавляются кнопки)
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -25,6 +28,8 @@ public class SelectResource extends Activity {
 
         tableLayout_SelectSours = (TableLayout)findViewById(R.id.TableLayout_SelectSours);
         tableRowsArr_SelectSours = new ArrayList<>();
+        button_SelectSours = (Button) findViewById(R.id.btnNextSelectResource);
+        button_SelectSours.setOnClickListener(this);
 
         // add Base to News
         BaseSourse.addBaseNews();
@@ -67,6 +72,27 @@ public class SelectResource extends Activity {
                     new TableLayout.LayoutParams
                             (TableRow.LayoutParams.WRAP_CONTENT,
                                     TableRow.LayoutParams.WRAP_CONTENT));
+        }
+
+        // Click BUTTON NEXT
+//        View.OnClickListener inputBtn = new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(this, ListNewsView.class);
+//                startActivity(intent);
+//
+//            }
+//        };
+//        button_SelectSours.setOnClickListener(inputBtn);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btnNextSelectResource) {
+            Intent intent = new Intent(this, ListNewsView.class);
+            startActivity(intent);
         }
     }
 }
