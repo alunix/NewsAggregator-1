@@ -22,9 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelectResource"></activity>
-        <activity
-            android:label="ListNews"
-            android:name=".ListNewsView"></activity>
+        <activity android:name=".ListNewsView"></activity>
+
     </application>
 
 </manifest>

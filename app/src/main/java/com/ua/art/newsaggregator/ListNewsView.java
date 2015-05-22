@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -43,19 +44,15 @@ public class ListNewsView extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.list_news_view);
 
         contactList = new ArrayList<HashMap<String, String>>();
-
         ListView lv = getListView();
 
-        // Calling async task to get json // вызов асинхронного потока для получения JSON
+        // Calling async task to get json
         new GetContacts().execute();
     }
 
-    /**
-     * Async task class to get json by making HTTP call
-     */
     private class GetContacts extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -66,7 +63,6 @@ public class ListNewsView extends ListActivity {
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
-
         }
 
         @Override
@@ -131,8 +127,8 @@ public class ListNewsView extends ListActivity {
             if (pDialog.isShowing())
                 pDialog.dismiss();
             /**
-             * Updating parsed JSON data into ListView
-             * */
+               * Updating parsed JSON data into ListView
+               * */
             ListAdapter adapter = new SimpleAdapter(
                     ListNewsView.this, contactList,
                     R.layout.list_item, new String[]{TAG_NAME, TAG_EMAIL,
@@ -142,5 +138,25 @@ public class ListNewsView extends ListActivity {
             setListAdapter(adapter);
         }
 
+//        @Override
+//        public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
