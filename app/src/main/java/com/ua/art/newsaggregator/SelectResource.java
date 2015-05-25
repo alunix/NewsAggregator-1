@@ -1,8 +1,6 @@
 package com.ua.art.newsaggregator;
 
 import android.annotation.TargetApi;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -29,41 +27,38 @@ public class SelectResource extends ActionBarActivity implements View.OnClickLis
         ArrayList<TableRow> tableRowsArr_SelectSours = new ArrayList<>();
         Button button_SelectSours = (Button) findViewById(R.id.btnNextSelectResource);
         button_SelectSours.setOnClickListener(this);
+        int columns = 3;
 
         // add Base to News
-        BaseSourse.addBaseNews();
+        BaseSourse baseSourse = new BaseSourse();
         // To add TableRow in TableLayout
-        float tempIdSize = (float) BaseSourse.idSelectSourceArr.size() / 3;
-        //TODO
-        if (Math.round(tempIdSize) < tempIdSize)       // Quantity TableRow / количество TableRow
-            tempIdSize = (int) tempIdSize + 1;
-        else
-            tempIdSize = (int) tempIdSize;
-
-        for (int i = 0; i < tempIdSize; i++) {
-            tableRowsArr_SelectSours.add(new TableRow(this));
-        }
+        addTableRow(baseSourse.selectSourceArr, tableRowsArr_SelectSours, columns);
 
         int idSizeSourceArr = 0;
         for (int j = 0; j < tableRowsArr_SelectSours.size(); j++) {
             //tableLayout_SelectSours.addView(tableRowsArr_SelectSours.get(j));
-            for (int i = 0; i < 4; i++, idSizeSourceArr++) {
-                if (BaseSourse.idSelectSourceArr.size() > idSizeSourceArr) {
-                    Button button = new Button(this);
-                    button.setText(BaseSourse.nameSelectSourceArr.get(idSizeSourceArr)); //Set to any meaningful text
-                    button.setBackgroundColor(Color.GREEN);
+            for (int i = 0; i < columns; i++, idSizeSourceArr++) {
+                if (baseSourse.selectSourceArr.size() > idSizeSourceArr) {
+                    //TODO ERROR
+                    buttonViewsArr_SelectSours.add(new Button(this));
+                    int sizeBtnArr = buttonViewsArr_SelectSours.size();
+                    Button buttonLast = buttonViewsArr_SelectSours.get(sizeBtnArr);
 
-                    tableRowsArr_SelectSours.get(j).addView(button); //Attach TextView to its parent (row)
+
+                    buttonLast.setText(baseSourse.selectSourceArr.get(1)[idSizeSourceArr]); //Set to any meaningful text
+                    buttonLast.setBackgroundColor(Color.GREEN);
+
+                    tableRowsArr_SelectSours.get(j).addView(buttonLast); //Attach TextView to its parent (row)
 
                     TableRow.LayoutParams params =
-                            (TableRow.LayoutParams) button.getLayoutParams();
+                            (TableRow.LayoutParams) buttonLast.getLayoutParams();
                     params.column = i;
                     params.span = 1;
                     params.setMargins(3, 3, 3, 3);
                     params.width = TableRow.LayoutParams.WRAP_CONTENT;
                     params.height = TableRow.LayoutParams.WRAP_CONTENT;
                     params.gravity = 9;
-                    button.setPadding(1, 1, 1, 1);
+                    buttonLast.setPadding(1, 1, 1, 1);
                 }
                 //tableRowsArr_SelectSours.get(j).setBackgroundColor(Color.BLACK);
             }
@@ -87,6 +82,16 @@ public class SelectResource extends ActionBarActivity implements View.OnClickLis
 //        button_SelectSours.setOnClickListener(inputBtn);
     }
 
+    // To add TableRow in TableLayout
+    private void addTableRow(ArrayList<String[]> baseSourse, ArrayList<TableRow> tableRowsArr_SelectSours, int columns) {
+        int tempIdSize = (int) Math.floor(baseSourse.size() / columns);
+        //TODO
+        if (baseSourse.size() % columns != 0)       // Quantity TableRow / количество TableRow
+            tempIdSize += 1;
+        for (int i = 0; i < tempIdSize; i++) {
+            tableRowsArr_SelectSours.add(new TableRow(this));
+        }
+    }
 
     @Override
     public void onClick(View v) {
