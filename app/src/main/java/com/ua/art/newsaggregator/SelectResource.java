@@ -1,6 +1,8 @@
 package com.ua.art.newsaggregator;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -29,36 +31,30 @@ public class SelectResource extends ActionBarActivity implements View.OnClickLis
         button_SelectSours.setOnClickListener(this);
 
         // add Base to News
-        BaseSourse baseSourse = new BaseSourse();
-
-        //TODO newTab
-        newTableRow(tableRowsArr_SelectSours);      // new TableRow, to add TableRow in TableLayout
-
-        addTableRowToTableLayout(tableLayout_SelectSours, tableRowsArr_SelectSours);
-    }
-
-    private ArrayList newTableRow(ArrayList tableRowsArr_SelectSours) {
+        BaseSourse.addBaseNews();
         // To add TableRow in TableLayout
-        //TODO err??????????????????????????????????????????????????????????????????
-        int tempIdSize = Integer.parseInt(String.format("the number is :%.0f", 10 / 3));    // int row in table
-        if (BaseSourse.selectSourceArr.size() % 3 != 0)         // Quantity TableRow / количество TableRow
-            tempIdSize++;
-        for (int i = 0; i < tempIdSize; i++) {                  // new TableRow
+        float tempIdSize = (float) BaseSourse.idSelectSourceArr.size() / 3;
+        //TODO
+        if (Math.round(tempIdSize) < tempIdSize)       // Quantity TableRow / количество TableRow
+            tempIdSize = (int) tempIdSize + 1;
+        else
+            tempIdSize = (int) tempIdSize;
+
+        for (int i = 0; i < tempIdSize; i++) {
             tableRowsArr_SelectSours.add(new TableRow(this));
         }
-        return tableRowsArr_SelectSours;
-    }
 
-    private void addTableRowToTableLayout(TableLayout tableLayout_SelectSours, ArrayList<TableRow> tableRowsArr_SelectSours) {
         int idSizeSourceArr = 0;
         for (int j = 0; j < tableRowsArr_SelectSours.size(); j++) {
             //tableLayout_SelectSours.addView(tableRowsArr_SelectSours.get(j));
             for (int i = 0; i < 4; i++, idSizeSourceArr++) {
-                if (BaseSourse.selectSourceArr.size() > idSizeSourceArr) {
+                if (BaseSourse.idSelectSourceArr.size() > idSizeSourceArr) {
                     Button button = new Button(this);
-                    button.setText(BaseSourse.selectSourceArr.get(1)[idSizeSourceArr]); //Set to any meaningful text
+                    button.setText(BaseSourse.nameSelectSourceArr.get(idSizeSourceArr)); //Set to any meaningful text
                     button.setBackgroundColor(Color.GREEN);
+
                     tableRowsArr_SelectSours.get(j).addView(button); //Attach TextView to its parent (row)
+
                     TableRow.LayoutParams params =
                             (TableRow.LayoutParams) button.getLayoutParams();
                     params.column = i;
@@ -69,12 +65,26 @@ public class SelectResource extends ActionBarActivity implements View.OnClickLis
                     params.gravity = 9;
                     button.setPadding(1, 1, 1, 1);
                 }
+                //tableRowsArr_SelectSours.get(j).setBackgroundColor(Color.BLACK);
             }
+
             tableLayout_SelectSours.addView(tableRowsArr_SelectSours.get(j),
                     new TableLayout.LayoutParams
                             (TableRow.LayoutParams.WRAP_CONTENT,
                                     TableRow.LayoutParams.WRAP_CONTENT));
         }
+
+        // Click BUTTON NEXT
+//        View.OnClickListener inputBtn = new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(this, ListNewsView.class);
+//                startActivity(intent);
+//
+//            }
+//        };
+//        button_SelectSours.setOnClickListener(inputBtn);
     }
 
 
