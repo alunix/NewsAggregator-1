@@ -22,7 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SelectResource"></activity>
         <activity android:name=".ButtonAddTable"></activity>
         <activity android:name=".ListNewsView"></activity>
 

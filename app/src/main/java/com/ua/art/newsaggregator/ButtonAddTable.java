@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -19,11 +20,11 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.select_resource);
+        setContentView(R.layout.selection_modules);
 
         TableLayout tableLayout = (TableLayout) findViewById(R.id.TableLayout_SelectSours);
-        ArrayList<TableRow> tableRowsArr = new ArrayList<>();
         Button button_SelectSours = (Button) findViewById(R.id.btnNextSelectResource);
+        ArrayList<TableRow> tableRowsArr = new ArrayList<>();
         button_SelectSours.setOnClickListener(this);
         int columns = 4;
 
@@ -32,7 +33,7 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
         // To add TableRow in TableLayout
         newTableRow(baseSourse.selectSourceArr, tableRowsArr, columns);
 
-        addButton(baseSourse.selectSourceArr);
+        addButton(baseSourse.selectSourceArr, columns);
 
         addBtnToRowsArrPARAM(baseSourse.selectSourceArr, tableRowsArr, columns);
 
@@ -49,13 +50,22 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
         }
     }
 
-    private void addButton(ArrayList<String[]> selectSourceArr) {
+    private void addButton(ArrayList<String[]> selectSourceArr, int columns) {
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int btnPadding = 1;
+        int widthPixDisplay = (int) displayMetrics.widthPixels / columns;
+        widthPixDisplay -= btnPadding;
+
         for (String[] elem : selectSourceArr) {
             Button btnArrList = new Button(this);
+            //btnArrList.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT,  ActionBar.LayoutParams.WRAP_CONTENT, 2));
+            btnArrList.setWidth(widthPixDisplay);
+            btnArrList.setHeight(widthPixDisplay);
             buttonViewsArr_SelectSours.add(btnArrList);
             btnArrList.setText(elem[1]); //Set to any meaningful text
+            btnArrList.setTextSize(10);
             btnArrList.setBackgroundColor(Color.GREEN);
-            btnArrList.setPadding(1, 1, 1, 1);
+            //btnArrList.setPadding(btnPadding, btnPadding+5, btnPadding, btnPadding);
         }
     }
 

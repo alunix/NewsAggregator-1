@@ -18,11 +18,18 @@
         android:layout_height="1dp"
         android:background="@color/accent_material_light" />
 
-    <WebView
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/webView"
-        android:layout_gravity="center_horizontal" />
+        android:gravity="top|center_horizontal"
+        android:id="@+id/TableLayout_SelectSours" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnNextSelectResource"
+        android:id="@+id/btnNextSelectResource"
+        android:layout_gravity="bottom|center_horizontal" />
 
 
 </LinearLayout>
