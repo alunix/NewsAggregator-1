@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelectResource"></activity>
+        <activity android:name=".ButtonAddTable"></activity>
         <activity android:name=".ListNewsView"></activity>
 
     </application>

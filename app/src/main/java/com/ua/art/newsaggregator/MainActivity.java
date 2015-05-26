@@ -38,7 +38,10 @@ public class MainActivity extends ActionBarActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
 
-        Intent intent = new Intent(this, SelectResource.class);
+//        Intent intent = new Intent(this, SelectResource.class);
+//        startActivity(intent);
+
+        Intent intent = new Intent(this, ButtonAddTable.class);
         startActivity(intent);
         //-------------------------------------
 //        Intent intent = new Intent(this, ListNewsView.class);

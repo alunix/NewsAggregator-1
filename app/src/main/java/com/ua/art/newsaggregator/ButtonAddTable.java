@@ -11,7 +11,7 @@ import android.widget.TableRow;
 
 import java.util.ArrayList;
 
-public class SelectResource extends ActionBarActivity implements View.OnClickListener {
+public class ButtonAddTable extends ActionBarActivity implements View.OnClickListener {
     public ArrayList<Button> buttonViewsArr_SelectSours = new ArrayList<>();
 
     //TODO you just have to download again (when the coup add button)
@@ -42,7 +42,7 @@ public class SelectResource extends ActionBarActivity implements View.OnClickLis
     // To add TableRow in TableLayout
     private void newTableRow(ArrayList<String[]> baseSourse, ArrayList<TableRow> tableRowsArr, int columns) {
         int tempIdSize = (int) Math.floor(baseSourse.size() / columns);
-        if (baseSourse.size() % columns != 0)       // Quantity TableRow / РєРѕР»РёС‡РµСЃС‚РІРѕ TableRow
+        if (baseSourse.size() % columns != 0)       // Quantity TableRow / количество TableRow
             tempIdSize += 1;
         for (int i = 0; i < tempIdSize; i++) {
             tableRowsArr.add(new TableRow(this));

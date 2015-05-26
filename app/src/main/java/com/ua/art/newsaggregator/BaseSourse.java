@@ -15,6 +15,7 @@ public class BaseSourse {
         addBaseNews("ZAXID", "ZAXID.NET", "img");
         addBaseNews("RIA_news", "rian.com.ua", "img");
         addBaseNews("kp", "kp.ua", "img");
+        addBaseNews("kp2", "kp2.ua", "img");
     }
 
     private void addBaseNews(String idSelectSource, String nameSelectSource, String imgSelectSource) {   //  id, name, img-logo Source
