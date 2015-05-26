@@ -21,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top|center_horizontal"
-        android:id="@+id/TableLayout_SelectSours1">
+        android:id="@+id/TableLayout_SelectSours1"
+        android:padding="10dp">
 
     </TableLayout>
 
