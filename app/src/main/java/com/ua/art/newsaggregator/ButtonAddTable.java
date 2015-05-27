@@ -1,7 +1,8 @@
 package com.ua.art.newsaggregator;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
@@ -13,7 +14,7 @@ import android.widget.TableRow;
 import java.util.ArrayList;
 
 public class ButtonAddTable extends ActionBarActivity implements View.OnClickListener {
-    public ArrayList<Button> buttonViewsArr_SelectSours = new ArrayList<>();
+    public ArrayList<Button> buttonViewsArr = new ArrayList<>();
 
     //TODO you just have to download again (when the coup add button)
     //@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -38,18 +39,21 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
         addBtnToRowsArrPARAM(baseSourse.selectSourceArr, tableRowsArr, columns);
 
         addRowsToTable(tableLayout, tableRowsArr);
+
+
     }
 
     // To add TableRow in TableLayout
     private void newTableRow(ArrayList<String[]> baseSourse, ArrayList<TableRow> tableRowsArr, int columns) {
         int tempIdSize = (int) Math.floor(baseSourse.size() / columns);
-        if (baseSourse.size() % columns != 0)       // Quantity TableRow / количество TableRow
+        if (baseSourse.size() % columns != 0)       // Quantity TableRow / пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ TableRow
             tempIdSize += 1;
         for (int i = 0; i < tempIdSize; i++) {
             tableRowsArr.add(new TableRow(this));
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void addButton(ArrayList<String[]> selectSourceArr, int columns) {
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         int btnPadding = 1;
@@ -58,13 +62,16 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
 
         for (String[] elem : selectSourceArr) {
             Button btnArrList = new Button(this);
-            //btnArrList.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT,  ActionBar.LayoutParams.WRAP_CONTENT, 2));
             btnArrList.setWidth(widthPixDisplay);
             btnArrList.setHeight(widthPixDisplay);
-            buttonViewsArr_SelectSours.add(btnArrList);
+            buttonViewsArr.add(btnArrList);
+
             btnArrList.setText(elem[1]); //Set to any meaningful text
             btnArrList.setTextSize(10);
-            btnArrList.setBackgroundColor(Color.GREEN);
+            //btnArrList.setBackgroundColor(Color.GREEN);
+            //btnArrList.setBackground(getResources().getDrawable(R.drawable.ic_business_m150));
+            btnArrList.setBackground(getResources().getDrawable(R.drawable.ic_business_m150_bw));
+            //btnArrList.setBackground(getResources().getDrawable(R.mipmap.ic_launcher));
             //btnArrList.setPadding(btnPadding, btnPadding+5, btnPadding, btnPadding);
         }
     }
@@ -75,9 +82,9 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
             for (int i = 0; i < columns; i++, idSizeSourceArr++) {
                 if (idSizeSourceArr >= baseSourse.size())
                     return;
-                elemRow.addView(buttonViewsArr_SelectSours.get(idSizeSourceArr)); //Attach TextView to its parent (row)
+                elemRow.addView(buttonViewsArr.get(idSizeSourceArr)); //Attach TextView to its parent (row)
                 TableRow.LayoutParams params =
-                        (TableRow.LayoutParams) buttonViewsArr_SelectSours.get(idSizeSourceArr).getLayoutParams();
+                        (TableRow.LayoutParams) buttonViewsArr.get(idSizeSourceArr).getLayoutParams();
                 params.column = i;
                 params.span = 1;
                 params.setMargins(3, 3, 3, 3);
@@ -100,6 +107,7 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnNextSelectResource) {
+
             Intent intent = new Intent(this, ListNewsView.class);
             startActivity(intent);
         }
