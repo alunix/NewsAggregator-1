@@ -30,6 +30,4 @@
         android:text="@string/btnNextSelectResource"
         android:id="@+id/btnNextSelectResource"
         android:layout_gravity="bottom|center_horizontal" />
-
-
 </LinearLayout>

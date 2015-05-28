@@ -8,25 +8,25 @@ public class BaseSourse {
 
     public BaseSourse() {
 
-        addBaseNews("news", "Новости", "ic_business_m150", "true");   // id, name, img-logo Source, pressed button
-        addBaseNews("technologies", "Технологии", "img", "false");
-        addBaseNews("RIA_news", "Дизайн", "img", "false");
-        addBaseNews("kp", "Фото", "img", "false");
-        addBaseNews("port", "Спорт", "img", "false");
-        addBaseNews("business", "Бизнес", "img", "false");
-        addBaseNews("style", "Стиль", "img", "false");
-        addBaseNews("travelings", "Путешествия", "img", "false");
-        addBaseNews("policy", "Политика", "img", "false");
-        addBaseNews("meal", "Еда", "img", "false");
-        addBaseNews("music", "Музыка", "img", "false");
-        addBaseNews("cinema", "Кино", "img", "false");
-//        addBaseNews("games", "Игры", "img", "false");
-//        addBaseNews("cars", "Автомобили", "img", "false");
-//        addBaseNews("science", "Наука", "img", "false");
-//        addBaseNews("house", "Дом", "img", "false");
-//        addBaseNews("secular", "Светская хронирка", "img", "false");
-//        addBaseNews("weather", "Погода", "img", "false");
-//        addBaseNews("fuel", "Топливо", "img", "false");
+        addBaseNews("news", "РќРѕРІРѕСЃС‚Рё", "ic_business_m150", "true");   // id, name, img-logo Source, pressed button
+        addBaseNews("technologies", "РўРµС…РЅРѕР»РѕРіРёРё", "img", "false");
+        addBaseNews("RIA_news", "Р”РёР·Р°Р№РЅ", "img", "false");
+        addBaseNews("kp", "Р¤РѕС‚Рѕ", "img", "false");
+        addBaseNews("port", "РЎРїРѕСЂС‚", "img", "false");
+        addBaseNews("business", "Р‘РёР·РЅРµСЃ", "img", "false");
+        addBaseNews("style", "РЎС‚РёР»СЊ", "img", "false");
+        addBaseNews("travelings", "РџСѓС‚РµС€РµСЃС‚РІРёСЏ", "img", "false");
+        addBaseNews("policy", "РџРѕР»РёС‚РёРєР°", "img", "false");
+        addBaseNews("meal", "Р•РґР°", "img", "false");
+        addBaseNews("music", "РњСѓР·С‹РєР°", "img", "false");
+        addBaseNews("cinema", "РљРёРЅРѕ", "img", "false");
+//        addBaseNews("games", "РРіСЂС‹", "img", "false");
+//        addBaseNews("cars", "РђРІС‚РѕРјРѕР±РёР»Рё", "img", "false");
+//        addBaseNews("science", "РќР°СѓРєР°", "img", "false");
+//        addBaseNews("house", "Р”РѕРј", "img", "false");
+//        addBaseNews("secular", "РЎРІРµС‚СЃРєР°СЏ С…СЂРѕРЅРёСЂРєР°", "img", "false");
+//        addBaseNews("weather", "РџРѕРіРѕРґР°", "img", "false");
+//        addBaseNews("fuel", "РўРѕРїР»РёРІРѕ", "img", "false");
     }
 
     private void addBaseNews(String idSelectSource, String nameSelectSource, String imgSelectSource, String pressedBtn) {   //  id, name, img-logo Source

@@ -2,6 +2,7 @@ package com.ua.art.newsaggregator;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -12,9 +13,12 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ButtonAddTable extends ActionBarActivity implements View.OnClickListener {
-    public ArrayList<Button> buttonViewsArr = new ArrayList<>();
+    private ArrayList<SuperButton> buttonViewsArr = new ArrayList<>();
+    // add Base to News
+    private BaseSourse baseSourse = new BaseSourse();
 
     //TODO you just have to download again (when the coup add button)
     //@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -27,20 +31,21 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
         Button button_SelectSours = (Button) findViewById(R.id.btnNextSelectResource);
         ArrayList<TableRow> tableRowsArr = new ArrayList<>();
         button_SelectSours.setOnClickListener(this);
+
         int columns = 4;
 
-        // add Base to News
-        BaseSourse baseSourse = new BaseSourse();
+
         // To add TableRow in TableLayout
         newTableRow(baseSourse.selectSourceArr, tableRowsArr, columns);
 
         addButton(baseSourse.selectSourceArr, columns);
+        for (Button elemBtn : buttonViewsArr) {                          // Listener button
+            elemBtn.setOnClickListener(this);
+        }
 
         addBtnToRowsArrPARAM(baseSourse.selectSourceArr, tableRowsArr, columns);
 
         addRowsToTable(tableLayout, tableRowsArr);
-
-
     }
 
     // To add TableRow in TableLayout
@@ -61,13 +66,17 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
         widthPixDisplay -= btnPadding;
 
         for (String[] elem : selectSourceArr) {
-            Button btnArrList = new Button(this);
+            //Button btnArrList = new Button(this);
+            SuperButton btnArrList = new SuperButton(this);
+            Random random = new Random();
+            btnArrList.setId(random.hashCode());
             btnArrList.setWidth(widthPixDisplay);
             btnArrList.setHeight(widthPixDisplay);
             buttonViewsArr.add(btnArrList);
 
-            btnArrList.setText(elem[1]); //Set to any meaningful text
+            btnArrList.setText(elem[1].toString()); //Set to any meaningful text
             btnArrList.setTextSize(10);
+            btnArrList.setTextColor(Color.parseColor("#ffffff"));
             //btnArrList.setBackgroundColor(Color.GREEN);
             //btnArrList.setBackground(getResources().getDrawable(R.drawable.ic_business_m150));
             btnArrList.setBackground(getResources().getDrawable(R.drawable.ic_business_m150_bw));
@@ -75,6 +84,7 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
             //btnArrList.setPadding(btnPadding, btnPadding+5, btnPadding, btnPadding);
         }
     }
+
 
     private void addBtnToRowsArrPARAM(ArrayList<String[]> baseSourse, ArrayList<TableRow> tableRowsArr, int columns) {
         int idSizeSourceArr = 0;
@@ -104,12 +114,24 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnNextSelectResource) {
-
             Intent intent = new Intent(this, ListNewsView.class);
             startActivity(intent);
+        }
+        for (SuperButton elem : buttonViewsArr) {
+            if (v.getId() == elem.getId()) {
+                //elem.getClipBounds()
+                if (elem.getSuperPressureBtn() == false) {
+                    elem.setBackground(getResources().getDrawable(R.drawable.ic_business_m150));
+                    elem.setSuperPressureBtn(true);
+                } else {
+                    elem.setBackground(getResources().getDrawable(R.drawable.ic_business_m150_bw));
+                    elem.setSuperPressureBtn(false);
+                }
+            }
         }
     }
 }
