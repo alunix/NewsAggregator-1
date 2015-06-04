@@ -3,6 +3,7 @@ package com.ua.art.newsaggregator;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -19,6 +20,7 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
     private ArrayList<SuperButton> buttonViewsArr = new ArrayList<>();
     // add Base to News
     private BaseSourse baseSourse = new BaseSourse();
+    private Button button_SelectSours;
 
     //TODO you just have to download again (when the coup add button)
     //@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -28,7 +30,7 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
         setContentView(R.layout.selection_modules);
 
         TableLayout tableLayout = (TableLayout) findViewById(R.id.TableLayout_SelectSours);
-        Button button_SelectSours = (Button) findViewById(R.id.btnNextSelectResource);
+        button_SelectSours = (Button) findViewById(R.id.btnNextSelectResource);
         ArrayList<TableRow> tableRowsArr = new ArrayList<>();
         button_SelectSours.setOnClickListener(this);
 
@@ -51,7 +53,7 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
     // To add TableRow in TableLayout
     private void newTableRow(ArrayList<String[]> baseSourse, ArrayList<TableRow> tableRowsArr, int columns) {
         int tempIdSize = (int) Math.floor(baseSourse.size() / columns);
-        if (baseSourse.size() % columns != 0)       // Quantity TableRow / ���������� TableRow
+        if (baseSourse.size() % columns != 0)       // Quantity TableRow
             tempIdSize += 1;
         for (int i = 0; i < tempIdSize; i++) {
             tableRowsArr.add(new TableRow(this));
@@ -77,11 +79,13 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
             btnArrList.setText(elem[1].toString()); //Set to any meaningful text
             btnArrList.setTextSize(10);
             btnArrList.setTextColor(Color.parseColor("#ffffff"));
-            //btnArrList.setBackgroundColor(Color.GREEN);
-            //btnArrList.setBackground(getResources().getDrawable(R.drawable.ic_business_m150));
-            btnArrList.setBackground(getResources().getDrawable(R.drawable.ic_business_m150_bw));
-            //btnArrList.setBackground(getResources().getDrawable(R.mipmap.ic_launcher));
-            //btnArrList.setPadding(btnPadding, btnPadding+5, btnPadding, btnPadding);
+
+            Drawable image = getResources().getDrawable(Integer.parseInt(elem[3]));
+            btnArrList.setBackground(image);
+            boolean pressedBtn;
+            if (elem[4] == "true") pressedBtn = true;
+            else pressedBtn = false;
+            btnArrList.setSuperPressureBtn(pressedBtn);
         }
     }
 
@@ -121,14 +125,20 @@ public class ButtonAddTable extends ActionBarActivity implements View.OnClickLis
             Intent intent = new Intent(this, ListNewsView.class);
             startActivity(intent);
         }
+
         for (SuperButton elem : buttonViewsArr) {
+
             if (v.getId() == elem.getId()) {
+                Random random = new Random();
+                button_SelectSours.setBackgroundColor(random.nextInt());
                 //elem.getClipBounds()
                 if (elem.getSuperPressureBtn() == false) {
-                    elem.setBackground(getResources().getDrawable(R.drawable.ic_business_m150));
+                    Drawable image = getResources().getDrawable(Integer.parseInt(baseSourse.selectSourceArr.get(buttonViewsArr.indexOf(elem))[2]));
+                    elem.setBackground(image);
                     elem.setSuperPressureBtn(true);
                 } else {
-                    elem.setBackground(getResources().getDrawable(R.drawable.ic_business_m150_bw));
+                    Drawable image = getResources().getDrawable(Integer.parseInt(baseSourse.selectSourceArr.get(buttonViewsArr.indexOf(elem))[3]));
+                    elem.setBackground(image);
                     elem.setSuperPressureBtn(false);
                 }
             }

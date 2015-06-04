@@ -16,6 +16,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:id="@+id/lineColor1"
         android:background="@color/accent_material_light" />
 
     <TableLayout
@@ -24,10 +25,21 @@
         android:gravity="top|center_horizontal"
         android:id="@+id/TableLayout_SelectSours" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/lineColor2"
+        android:background="@color/accent_material_light"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp" />
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btnNextSelectResource"
         android:id="@+id/btnNextSelectResource"
-        android:layout_gravity="bottom|center_horizontal" />
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="#ffbdd6ff" />
+
+
 </LinearLayout>
