@@ -1,4 +1,4 @@
-package com.ua.art.newsaggregator;
+package com.ua.art.newsaggregator.service_http;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import com.ua.art.newsaggregator.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package com.ua.art.newsaggregator;
+package com.ua.art.newsaggregator.service_http;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

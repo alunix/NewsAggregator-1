@@ -23,9 +23,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ButtonAddTable"
+            android:name=".navigation.ButtonAddTable"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".ListNewsView"></activity>
+        <activity android:name=".service_http.ListNewsView"></activity>
 
     </application>
 

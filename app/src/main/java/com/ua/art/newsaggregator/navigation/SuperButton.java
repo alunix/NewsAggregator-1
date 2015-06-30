@@ -1,4 +1,4 @@
-package com.ua.art.newsaggregator;
+package com.ua.art.newsaggregator.navigation;
 
 import android.content.Context;
 import android.widget.Button;

@@ -1,6 +1,8 @@
-package com.ua.art.newsaggregator;
+package com.ua.art.newsaggregator.model;
 
 import android.app.Activity;
+
+import com.ua.art.newsaggregator.R;
 
 import java.util.ArrayList;
 

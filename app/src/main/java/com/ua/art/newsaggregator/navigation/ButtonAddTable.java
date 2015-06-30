@@ -1,4 +1,4 @@
-package com.ua.art.newsaggregator;
+package com.ua.art.newsaggregator.navigation;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -12,6 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+
+import com.ua.art.newsaggregator.R;
+import com.ua.art.newsaggregator.service_http.ListNewsView;
+import com.ua.art.newsaggregator.model.BaseSourse;
 
 import java.util.ArrayList;
 import java.util.Random;
