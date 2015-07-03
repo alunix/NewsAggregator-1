@@ -1,43 +1,86 @@
 package com.ua.art.newsaggregator;
 
-
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.view.MenuItem;
+import android.support.v4.app.FragmentTransaction;
 
-public class MainActivity extends ActionBarActivity {
+import com.example.android.slidingtabscolors.SlidingMainActivity;
+import com.example.android.slidingtabscolors.SlidingTabsColorsFragment;
 
-//    private NavigationDrawerFragment mNavigationDrawerFragment;
-//
-//    private CharSequence mTitle;
-
-    public static String LOG_TAG = "my_log";
+public class MainActivity extends SlidingMainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
         setContentView(R.layout.main);
 
+        if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            SlidingTabsColorsFragment fragment = new SlidingTabsColorsFragment();
+            transaction.replace(com.example.android.slidingtabscolors.R.id.sample_content_fragment, fragment);
+            transaction.commit();
+        }
 
 
+//        LinearLayout tableLayout = (LinearLayout) findViewById(R.id.linearSelMod);
+//        NewsTable newsTable = new NewsTable(this, tableLayout);
+//        newsTable.createTable();
 
 
-
-//        mNavigationDrawerFragment = (NavigationDrawerFragment)
-//                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-//        mTitle = getTitle();
-//
-//        // Set up the drawer.
-//        mNavigationDrawerFragment.setUp(
-//                R.id.navigation_drawer,
-//                (DrawerLayout) findViewById(R.id.drawer_layout));
-
-//        Intent intent = new Intent(this, ButtonAddTable.class);
+//        Intent intent = new Intent(this, NewsTable.class);
 //        startActivity(intent);
+
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+}
+
+
+//public class MainActivity extends ActionBarActivity {
+//
+////    private NavigationDrawerFragment mNavigationDrawerFragment;
+////
+////    private CharSequence mTitle;
+//
+//    public static String LOG_TAG = "my_log";
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.hide();
+//        setContentView(R.layout.main);
+//
+//
+//
+//
+//
+//
+////        mNavigationDrawerFragment = (NavigationDrawerFragment)
+////                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+////        mTitle = getTitle();
+////
+////        // Set up the drawer.
+////        mNavigationDrawerFragment.setUp(
+////                R.id.navigation_drawer,
+////                (DrawerLayout) findViewById(R.id.drawer_layout));
+//
+////        Intent intent = new Intent(this, ButtonAddTable.class);
+////        startActivity(intent);
+//    }
 
 //    @Override
 //    public void onNavigationDrawerItemSelected(int position) {
@@ -80,17 +123,17 @@ public class MainActivity extends ActionBarActivity {
 //        return super.onCreateOptionsMenu(menu);
 //    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
 //    public static class PlaceholderFragment extends Fragment {
 //
@@ -122,4 +165,4 @@ public class MainActivity extends ActionBarActivity {
 //        }
 //    }
 
-}
+

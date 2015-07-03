@@ -35,19 +35,19 @@ package com.example.android.slidingtabscolors.tests;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.example.android.slidingtabscolors.MainActivity;
+import com.example.android.slidingtabscolors.SlidingMainActivity;
 import com.example.android.slidingtabscolors.SlidingTabsColorsFragment;
 
 /**
 * Tests for SlidingTabsColors sample.
 */
-public class SampleTests extends ActivityInstrumentationTestCase2<MainActivity> {
+public class SampleTests extends ActivityInstrumentationTestCase2<SlidingMainActivity> {
 
-    private MainActivity mTestActivity;
+    private SlidingMainActivity mTestActivity;
     private SlidingTabsColorsFragment mTestFragment;
 
     public SampleTests() {
-        super(MainActivity.class);
+        super(SlidingMainActivity.class);
     }
 
     @Override

@@ -10,7 +10,6 @@ import android.widget.TableRow;
 
 import com.ua.art.newsaggregator.model.News;
 
-
 public class NewsTable {
 
     private Context mContext;
