@@ -22,10 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".navigation.ButtonAddTable"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".service_http.ListNewsView"></activity>
+        <activity android:name=".controller.ListNewsView"/>
+        <!--<activity-->
+            <!--android:name=".navigation.ButtonAddTable"-->
+            <!--android:screenOrientation="portrait"></activity>-->
+        <!--<activity android:name=".service_http.ListNewsView"></activity>-->
 
     </application>
 

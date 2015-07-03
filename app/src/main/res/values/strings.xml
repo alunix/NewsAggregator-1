@@ -14,4 +14,35 @@
     <string name="btnNextSelectResource">Next</string>
     <string name="textSelectResource">Will choose a resource</string>
     <string name="textSelectModules">Выберите то, что вам интересно</string>
+
+    <string name="news_en">news</string>
+    <string name="news_ru">Новости</string>
+    <string name="technologies_en">technologies</string>
+    <string name="technologies_ru">Технологии</string>
+    <string name="design_en">design</string>
+    <string name="design_ru">Дизайн</string>
+    <string name="foto_en">foto</string>
+    <string name="foto_ru">Фото</string>
+    <string name="button_clicked">hello</string>
+    <string name="sport_en">sport</string>
+    <string name="sport_ru">Спорт</string>
+    <string name="business_en">business</string>
+    <string name="business_ru">Бизнес</string>
+    <string name="style_en">style</string>
+    <string name="style_ru">Стиль</string>
+    <string name="travelings_en">travelings</string>
+    <string name="travelings_ru">Путешествия</string>
+    <string name="politics_en">politics</string>
+    <string name="politics_ru">Политика</string>
+    <string name="meal_en">meal</string>
+    <string name="meal">Еда</string>
+    <string name="music_en">music</string>
+    <string name="music_ru">Музыка</string>
+    <string name="cinema_en">cinema</string>
+    <string name="cinema_ru">Кино</string>
+    <string name="games_en">games</string>
+    <string name="games_ru">Игры</string>
+    <string name="cars_en">cars</string>
+    <string name="cars_ru">Автомобили</string>
+    <string name="hello">Hello</string>
 </resources>
