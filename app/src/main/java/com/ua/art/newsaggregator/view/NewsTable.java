@@ -1,6 +1,8 @@
 package com.ua.art.newsaggregator.view;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -57,6 +59,7 @@ public class NewsTable {
         return row;
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private View prepareButton(final News news) {
         final Button button = new Button(mContext);
         button.setText(mContext.getString(news.getRuResource()));

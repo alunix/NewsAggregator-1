@@ -3,10 +3,11 @@ package com.ua.art.newsaggregator;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 
-import com.example.android.slidingtabscolors.SlidingMainActivity;
+import com.example.android.common.activities.SampleActivityBase;
 import com.example.android.slidingtabscolors.SlidingTabsColorsFragment;
 
-public class MainActivity extends SlidingMainActivity {
+
+public class MainActivity extends SampleActivityBase {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +17,7 @@ public class MainActivity extends SlidingMainActivity {
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             SlidingTabsColorsFragment fragment = new SlidingTabsColorsFragment();
-            transaction.replace(com.example.android.slidingtabscolors.R.id.sample_content_fragment, fragment);
+            transaction.replace(R.id.sample_content_fragment, fragment);
             transaction.commit();
         }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/E:/Artemius/android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values-v11/template-styles.xml -->
+    <!-- From: file:/D:/Rabota/Android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values-v11/template-styles.xml -->
     <eat-comment/>
     <style name="Theme.Base" parent="android:Theme.Holo.Light"/>
 </resources>

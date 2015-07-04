@@ -10,11 +10,10 @@
 		android:layout_height="2dip"
 		android:background="#FF00FF00" />
 
-	<ListView
-		android:clickable="true"
-		android:focusable="true"
-		android:id="@+id/android:list"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
-	</ListView>
+	<FrameLayout
+		android:id="@+id/sample_content_fragment"
+		android:layout_weight="2"
+		android:layout_width="match_parent"
+		android:layout_height="0px" />
+
 </LinearLayout>

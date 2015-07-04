@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/E:/Artemius/android/GitHub/NewsAggregator/SlidingTabs/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.2/res/values/values.xml -->
+    <!-- From: file:/D:/Rabota/Android/GitHub/NewsAggregator/SlidingTabs/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.2/res/values/values.xml -->
     <eat-comment/>
     <color name="cardview_dark_background">#FF202020</color>
     <color name="cardview_light_background">#FFFAFAFA</color>
@@ -10,7 +10,7 @@
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
-    <!-- From: file:/E:/Artemius/android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/template-dimens.xml -->
+    <!-- From: file:/D:/Rabota/Android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/template-dimens.xml -->
     <eat-comment/>
     <dimen name="horizontal_page_margin">@dimen/margin_medium</dimen>
     <dimen name="margin_huge">64dp</dimen>
@@ -19,7 +19,7 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_tiny">4dp</dimen>
     <dimen name="vertical_page_margin">@dimen/margin_medium</dimen>
-    <!-- From: file:/E:/Artemius/android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/base-strings.xml -->
+    <!-- From: file:/D:/Rabota/Android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/base-strings.xml -->
     <eat-comment/>
     <string name="app_name">SlidingTabsColors</string>
     <string name="intro_message">
@@ -32,20 +32,20 @@
         
         ]]>
     </string>
-    <!-- From: file:/E:/Artemius/android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/fragmentview_strings.xml -->
+    <!-- From: file:/D:/Rabota/Android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/fragmentview_strings.xml -->
     <eat-comment/>
     <string name="sample_hide_log">Hide Log</string>
     <string name="sample_show_log">Show Log</string>
-    <!-- From: file:/E:/Artemius/android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/strings.xml -->
+    <!-- From: file:/D:/Rabota/Android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="tab_messages">Messages</string>
     <string name="tab_notifications">Notifications</string>
     <string name="tab_photos">Photos</string>
     <string name="tab_stream">Stream</string>
-    <!-- From: file:/E:/Artemius/android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/template-styles.xml -->
+    <!-- From: file:/D:/Rabota/Android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/template-styles.xml -->
     <eat-comment/>
     <style name="AppTheme" parent="Theme.Sample"/>
-    <!-- From: file:/E:/Artemius/android/GitHub/NewsAggregator/SlidingTabs/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.2/res/values/values.xml -->
+    <!-- From: file:/D:/Rabota/Android/GitHub/NewsAggregator/SlidingTabs/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.2/res/values/values.xml -->
     <eat-comment/>
     <style name="CardView">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
@@ -61,7 +61,7 @@
     <style name="CardView.Light">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
-    <!-- From: file:/E:/Artemius/android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/template-styles.xml -->
+    <!-- From: file:/D:/Rabota/Android/GitHub/NewsAggregator/SlidingTabs/src/main/res/values/template-styles.xml -->
     <eat-comment/>
     <style name="Theme.Base" parent="android:Theme.Light"/>
     <style name="Theme.Sample" parent="Theme.Base"/>
