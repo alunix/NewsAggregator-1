@@ -1,6 +1,6 @@
 package com.ua.art.newsaggregator.controller;
 
-import com.ua.art.newsaggregator.MSslSocketFactory;
+import com.ua.art.newsaggregator.MSslSocketFactoryNews;
 import com.ua.art.newsaggregator.model.ResponseObject;
 
 import org.apache.http.HttpEntity;
@@ -93,7 +93,7 @@ public class HttpClient {
             KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
             trustStore.load(null, null);
 
-            SSLSocketFactory sf = new MSslSocketFactory(trustStore);
+            SSLSocketFactory sf = new MSslSocketFactoryNews(trustStore);
             sf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
 
             HttpParams params = new BasicHttpParams();

@@ -1,8 +1,5 @@
 package com.ua.art.newsaggregator.model;
 
-/**
- * Created by Katerina.Knyrik on 05.07.15.
- */
 public class ResponseObject {
 
     private int status;
