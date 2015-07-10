@@ -47,7 +47,7 @@ public class ORMLiteActivity extends OrmLiteBaseListActivity<DatabaseHelper> {
 
 		findAndCreateAllViews();
 
-		this.listAdapter = new ModuleAdaptor(this, R.layout.person_data_row, this.modules);
+		this.listAdapter = new ModuleAdaptor(this, R.layout.row_person_data, this.modules);
 
 		this.listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override

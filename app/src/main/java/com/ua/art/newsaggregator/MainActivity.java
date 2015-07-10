@@ -20,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.main);
         new Preferences(this);
 
-        if (isLogin()) {
+        if (!isLogin()) {
             startApp();
         } else {
             loginUser();

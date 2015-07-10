@@ -45,4 +45,10 @@
     <string name="cars_en">cars</string>
     <string name="cars_ru">Автомобили</string>
     <string name="hello">Hello</string>
+    <string name="enter_your_login">Введите Ваш логин</string>
+    <string name="enter_your_password">Введите Ваш пароль:</string>
+    <string name="show_password">Показать пароль</string>
+    <string name="enter">Войти</string>
+    <string name="error_fill_field">Ошибка ввода!</string>
+    <string name="please_wait">Пожалуйста, подождите...</string>
 </resources>

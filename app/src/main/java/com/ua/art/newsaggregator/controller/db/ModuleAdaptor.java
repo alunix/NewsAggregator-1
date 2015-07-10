@@ -34,7 +34,7 @@ public class ModuleAdaptor extends ArrayAdapter<Module> {
 		ViewHolder holder;
 		if (view == null) {
 			final LayoutInflater vi = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = vi.inflate(R.layout.person_data_row, null);
+			view = vi.inflate(R.layout.row_person_data, null);
 
 			holder = new ViewHolder();
 			holder.name = (TextView) view.findViewById(R.id.name);
