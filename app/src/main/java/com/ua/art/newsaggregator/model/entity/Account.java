@@ -22,19 +22,19 @@ public class Account {
 
 
     @DatabaseField(canBeNull = true)
-    private float factor;
+    private String factorCategory;
 
 
     public Account() {
         // all persisted classes must define a no-arg constructor with at least package visibility
     }
 
-    public Account(final String name, final String password, final String sourse, final String category, final String factor) {
+    public Account(final String name, final String password, final String sourse, final String category, final String factorCategory) {
         this.name = name;
         this.password = password;
-        this.password = sourse;
-        this.password = category;
-        this.password = factor;
+        this.sourse = sourse;
+        this.category = category;
+        this.factorCategory = factorCategory;
     }
 
 
@@ -78,12 +78,12 @@ public class Account {
         this.category = category;
     }
 
-    public float getFactor() {
-        return factor;
+    public String getFactorCategory() {
+        return factorCategory;
     }
 
-    public void setFactor(float factor) {
-        this.factor = factor;
+    public void setFactorCategory(String factorCategory) {
+        this.factorCategory = factorCategory;
     }
 
     public final boolean hasId() {
