@@ -27,12 +27,6 @@ public class Preferences {
         Preferences.sContext = context;
     }
 
-    public static void savePassword(String password) {
-        sContext.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
-                .edit()
-                .putString(PASSWORD, password)
-                .commit();
-    }
 
     public static void savePublicKey(String key)
             throws NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException,
@@ -54,12 +48,19 @@ public class Preferences {
                 .commit();
     }
 
-    public static String getPublicKey() {
-        return sContext.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).getString(PUBLIC_KEY, "");
-    }
-
     public static String getPassword() {
         return sContext.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).getString(PASSWORD, "");
+    }
+
+    public static void savePassword(String password) {
+        sContext.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
+                .edit()
+                .putString(PASSWORD, password)
+                .commit();
+    }
+
+    public static String getPublicKey() {
+        return sContext.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).getString(PUBLIC_KEY, "");
     }
 
     public static void clearAll() {

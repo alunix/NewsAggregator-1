@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.ua.art.newsaggregator.adapter.MainAdapter;
@@ -13,6 +14,7 @@ import com.ua.art.newsaggregator.view.LoginActivity;
 public class MainActivity extends ActionBarActivity {
 
     private static final int LOGIN_ACTIVITY = 0;
+    public static final String TAG = "MyLog";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class MainActivity extends ActionBarActivity {
         } else {
             loginUser();
         }
+        Log.v(TAG, "isLogin() = " + isLogin());
     }
 
     private boolean isLogin() {

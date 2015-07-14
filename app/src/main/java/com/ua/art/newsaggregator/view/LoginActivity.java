@@ -1,8 +1,6 @@
 package com.ua.art.newsaggregator.view;
 
 import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -13,17 +11,16 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ua.art.newsaggregator.Preferences;
 import com.ua.art.newsaggregator.R;
 
+/**
+ * Created by Katerina.Knyrik on 05.07.15.
+ */
 public class LoginActivity extends ActionBarActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private EditText mLogin_editText;
     private EditText mPassword_editText;
-
-    public static final String APP_PREFERENCES = "mySettings";
-    public static final String APP_PREFERENCES_LOGIN = "login";
-    public static final String APP_PREFERENCES_PASSWORD = "password";
-    private SharedPreferences mSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +32,6 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
         mPassword_editText = (EditText) findViewById(R.id.password_edit);
         ((CheckBox) findViewById(R.id.show_password_check)).setOnCheckedChangeListener(this);
         findViewById(R.id.login_button).setOnClickListener(this);
-
-        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -66,33 +61,13 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             String login = mLogin_editText.getText().toString();
             String password = mPassword_editText.getText().toString();
 
-            // add preferences login and pass
-            if (!mSettings.contains(APP_PREFERENCES_LOGIN)){
-                SharedPreferences.Editor editor = mSettings.edit();
-                editor.putString(APP_PREFERENCES_LOGIN, String.valueOf(mLogin_editText));
-                editor.putString(APP_PREFERENCES_PASSWORD, String.valueOf(mPassword_editText));
-                editor.apply();
+            Preferences.saveLogin(login);
+            Preferences.savePassword(password);
+            Toast toast = Toast.makeText(getApplicationContext(), Preferences.getLogin(), Toast.LENGTH_SHORT);
 
-                Toast toast = Toast.makeText(getApplicationContext(), "save login", Toast.LENGTH_SHORT);
-                toast.show();
-                setResult(RESULT_OK);
-            }
-            else {
-                if (mSettings.contains(APP_PREFERENCES_PASSWORD)){
-                    Toast toast = Toast.makeText(getApplicationContext(), "input login", Toast.LENGTH_SHORT);
-                    toast.show();
-                    setResult(RESULT_OK);
-//                    finish();
-                }
-                else {
-                    mPassword_editText.setError(getString(R.string.error_fill_field));
-                    Toast toast = Toast.makeText(getApplicationContext(), "error password", Toast.LENGTH_SHORT);
-                    return;
-                }
-            }
-        //    try {
-              //  new LoginService(LoginActivity.this, Constants.LOGIN, login, password).authorization();
-//            setResult(RESULT_OK);
+            //    try {
+            //  new LoginService(LoginActivity.this, Constants.LOGIN, login, password).authorization();
+            setResult(RESULT_OK);
             finish();
 //            } catch (JSONException | NoSuchAlgorithmException | IOException e) {
 //                e.printStackTrace();
