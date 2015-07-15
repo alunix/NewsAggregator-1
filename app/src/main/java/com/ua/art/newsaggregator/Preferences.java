@@ -2,6 +2,8 @@ package com.ua.art.newsaggregator;
 
 import android.content.Context;
 
+import com.ua.art.newsaggregator.model.News;
+
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -12,15 +14,15 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-/**
- * Created by Katerina.Knyrik on 05.07.15.
- */
 public class Preferences {
 
     private static final String PREFERENCES = "preferences";
     private static final String PASSWORD = "password";
     private static final String PUBLIC_KEY = "publicKey";
     private static final String LOGIN = "login";
+    private static final String CATEGORY = "category";
+
+
     private static Context sContext;
 
     public Preferences(Context context) {
@@ -45,6 +47,13 @@ public class Preferences {
         sContext.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
                 .edit()
                 .putString(LOGIN, login.trim())
+                .commit();
+    }
+
+    public static void saveCategory() {
+        sContext.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
+                .edit()
+                .putString(CATEGORY, News.values()[0].toString().trim())
                 .commit();
     }
 

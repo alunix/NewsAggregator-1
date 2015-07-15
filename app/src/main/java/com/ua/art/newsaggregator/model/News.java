@@ -3,9 +3,6 @@ package com.ua.art.newsaggregator.model;
 
 import com.ua.art.newsaggregator.R;
 
-/**
- * Created by Katerina.Knyrik on 07.06.15.
- */
 public enum News {
 
     NEWS(0, R.string.news_en, R.string.news_ru, R.drawable.ic_news_m150, R.drawable.ic_news_m150_bw, true),   // id, name, img-logo Source, pressed button

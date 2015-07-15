@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.ua.art.newsaggregator.adapter.MainAdapter;
+import com.ua.art.newsaggregator.smartDroid.CategoryStatus;
 import com.ua.art.newsaggregator.view.LoginActivity;
 
 
@@ -28,6 +29,8 @@ public class MainActivity extends ActionBarActivity {
             loginUser();
         }
         Log.v(TAG, "isLogin() = " + isLogin());
+
+        CategoryStatus categoryStatus = new CategoryStatus();
     }
 
     private boolean isLogin() {

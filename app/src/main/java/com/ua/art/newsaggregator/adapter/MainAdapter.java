@@ -11,9 +11,6 @@ import com.ua.art.newsaggregator.view.fragments.SettingsFragment;
 import com.ua.art.newsaggregator.view.fragments.TopNFragment;
 import com.ua.art.newsaggregator.view.fragments.WeatherFragment;
 
-/**
- * Created by Katerina.Knyrik on 05.07.15.
- */
 public class MainAdapter extends FragmentPagerAdapter {
 
     public MainAdapter(FragmentManager fm) {
@@ -22,19 +19,19 @@ public class MainAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position){
-            case 0: {
+            case 0:
                 return "News list";
-            }case 1: {
+            case 1:
                 return "Choose category";
-            }case 2:{
+            case 2:
                 return "Top20";
-            }case 3:{
+            case 3:
                 return "Droid News";
-            }case 4:{
+            case 4:
                 return "Weather";
-            }case 5:{
+            case 5:
                 return "Settings";
-            } default:
+             default:
                 return "News list";
         }
     }
@@ -61,4 +58,13 @@ public class MainAdapter extends FragmentPagerAdapter {
                 return new NewsListFragment();
         }
     }
+
+//    private Fragment NewsListFragm(){
+//        Thread t = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                return new NewsListFragment();
+//            }
+//        });
+//    }
 }

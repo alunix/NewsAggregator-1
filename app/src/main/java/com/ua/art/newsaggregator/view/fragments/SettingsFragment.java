@@ -35,6 +35,7 @@ public class SettingsFragment extends Fragment {
                 case R.id.btnExitLogin:
                     Preferences.saveLogin("");
                     Preferences.savePassword("");
+                    //Toast.makeText(context, "text", Toast.LENGTH_SHORT).show();
                     Log.v(TAG, "Exit");
                     break;
                 default:

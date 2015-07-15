@@ -14,9 +14,6 @@ import android.widget.Toast;
 import com.ua.art.newsaggregator.Preferences;
 import com.ua.art.newsaggregator.R;
 
-/**
- * Created by Katerina.Knyrik on 05.07.15.
- */
 public class LoginActivity extends ActionBarActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private EditText mLogin_editText;
@@ -64,6 +61,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             Preferences.saveLogin(login);
             Preferences.savePassword(password);
             Toast toast = Toast.makeText(getApplicationContext(), Preferences.getLogin(), Toast.LENGTH_SHORT);
+            toast.show();
 
             //    try {
             //  new LoginService(LoginActivity.this, Constants.LOGIN, login, password).authorization();
