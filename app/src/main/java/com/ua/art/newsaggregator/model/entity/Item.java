@@ -22,7 +22,7 @@ public class Item {
     private String image;
 
     @DatabaseField(canBeNull = true)
-    private String datetime;
+    private String pubDate;
 
     @DatabaseField(canBeNull = true)
     private String text;
@@ -36,12 +36,12 @@ public class Item {
         // all persisted classes must define a no-arg constructor with at least package visibility
     }
 
-    public Item(final String name, final String link, final String description, final String image, final String datetime, final String text, final Source source) {
+    public Item(final String name, final String link, final String description, final String image, final String pubDate, final String text, final Source source) {
         this.name = name;
         this.link = link;
         this.description = description;
         this.image = image;
-        this.datetime = datetime;
+        this.pubDate = pubDate;
         this.text = text;
         this.source = source;
     }
@@ -86,12 +86,12 @@ public class Item {
         this.image = image;
     }
 
-    public String getDatetime() {
-        return this.datetime;
+    public String getPubDate() {
+        return this.pubDate;
     }
 
-    public void setDatetime(final String datetime) {
-        this.datetime = datetime;
+    public void setPubDate(final String pubDate) {
+        this.pubDate = pubDate;
     }
 
     public String getText() {

@@ -4,9 +4,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-/**
- * Created by Katerina.Knyrik on 05.07.15.
- */
 public class ConnectionController {
     private static Context sContext;
 

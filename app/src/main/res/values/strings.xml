@@ -46,9 +46,13 @@
     <string name="cars_ru">Автомобили</string>
     <string name="hello">Hello</string>
     <string name="enter_your_login">Введите Ваш логин</string>
+    <string name="enter_your_email">Введите Ваш email</string>
     <string name="enter_your_password">Введите Ваш пароль:</string>
     <string name="show_password">Показать пароль</string>
     <string name="enter">Войти</string>
+    <string name="enterReg">Зарегистрироваться</string>
     <string name="error_fill_field">Ошибка ввода!</string>
     <string name="please_wait">Пожалуйста, подождите...</string>
+    <string name="textInputAcaunt">Есть акаунт?</string>
+    <string name="textInput">Войти</string>
 </resources>

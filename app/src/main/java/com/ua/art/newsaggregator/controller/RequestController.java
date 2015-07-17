@@ -14,9 +14,6 @@ import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * Created by Katerina.Knyrik on 05.07.15.
- */
 public abstract class RequestController {
 
     private Activity mActivity;

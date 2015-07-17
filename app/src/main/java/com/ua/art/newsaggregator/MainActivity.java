@@ -10,6 +10,7 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.ua.art.newsaggregator.adapter.MainAdapter;
 import com.ua.art.newsaggregator.smartDroid.CategoryStatus;
 import com.ua.art.newsaggregator.view.LoginActivity;
+import com.ua.art.newsaggregator.view.LoginActivityReg;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -27,6 +28,7 @@ public class MainActivity extends ActionBarActivity {
             startApp();
         } else {
             loginUser();
+            //loginUserReg();
         }
         Log.v(TAG, "isLogin() = " + isLogin());
 
@@ -39,6 +41,10 @@ public class MainActivity extends ActionBarActivity {
 
     private void loginUser() {
         startActivityForResult(new Intent(this, LoginActivity.class), LOGIN_ACTIVITY);
+    }
+
+    private void loginUserReg() {
+        startActivityForResult(new Intent(this, LoginActivityReg.class), LOGIN_ACTIVITY);
     }
 
     private void startApp() {

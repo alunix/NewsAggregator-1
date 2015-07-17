@@ -24,8 +24,11 @@
         </activity>
         <activity android:name=".view.ListNewsView"/>
         <activity android:name=".view.LoginActivity"
-                  android:theme="@style/Theme.AppCompat.Light.Dialog"
-                  android:configChanges="keyboardHidden|orientation|screenSize"/>
+        android:theme="@style/Theme.AppCompat.Light.Dialog"
+        android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name=".view.LoginActivityReg"
+            android:theme="@style/Theme.AppCompat.Light.Dialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <!--<activity-->
             <!--android:name=".navigation.ButtonAddTable"-->
             <!--android:screenOrientation="portrait"></activity>-->

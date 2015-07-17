@@ -58,6 +58,14 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             String login = mLogin_editText.getText().toString();
             String password = mPassword_editText.getText().toString();
 
+            if ((Preferences.getLogin()==login)&&(Preferences.getPassword()==password)){
+
+            }
+            else {
+
+            }
+
+
             Preferences.saveLogin(login);
             Preferences.savePassword(password);
             Toast toast = Toast.makeText(getApplicationContext(), Preferences.getLogin(), Toast.LENGTH_SHORT);

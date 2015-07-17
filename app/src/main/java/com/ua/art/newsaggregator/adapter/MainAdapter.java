@@ -43,7 +43,7 @@ public class MainAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0: {
-                return new ChooseCategoryFragment();  //return new NewsListFragment();
+                return new NewsListFragment();  //return new NewsListFragment();
             }case 1: {
                 return new ChooseCategoryFragment();
             }case 2:{

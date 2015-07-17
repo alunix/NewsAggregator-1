@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300sp"
+    android:layout_height="wrap_content"
+    android:layout_margin="20sp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_your_login"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <EditText
+        android:id="@+id/login_edit_reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_your_email"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <EditText
+        android:id="@+id/email_edit_reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress" />
+    <TextView
+        android:layout_marginTop="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_your_password"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <EditText
+        android:id="@+id/password_edit_reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        />
+    <!--android:inputType="textPassword"-->
+    <CheckBox
+        android:id="@+id/show_password_check_reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:text="@string/show_password"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:nestedScrollingEnabled="false"
+        android:enabled="true"
+        android:checked="false" />
+
+    <Button
+        android:id="@+id/login_button_reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="@string/enterReg"
+        android:background="@drawable/btn_gray"/>
+
+    <LinearLayout
+        android:layout_marginTop="20sp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_marginRight="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textInputAcaunt"
+            android:id="@+id/textLoginInput" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textInput"
+            android:id="@+id/loginInput"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ff2a21ff" />
+    </LinearLayout>
+
+</LinearLayout>
