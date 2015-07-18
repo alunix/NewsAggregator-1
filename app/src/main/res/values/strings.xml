@@ -55,4 +55,6 @@
     <string name="please_wait">Пожалуйста, подождите...</string>
     <string name="textInputAcaunt">Есть акаунт?</string>
     <string name="textInput">Войти</string>
+    <string name="temperaturaTodayText">Температура сегодня:</string>
+    <string name="wearherBtn">Узнать погоду</string>
 </resources>
