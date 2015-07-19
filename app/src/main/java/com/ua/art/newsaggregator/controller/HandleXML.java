@@ -10,7 +10,7 @@ import java.net.URL;
 public class HandleXML {
 
     private String title = "title";
-    private String sun = "sun";
+    private String weather_type = "weather_type";
     private String description = "description";
 
     private String urlString = null;
@@ -22,8 +22,8 @@ public class HandleXML {
     public String getTitle(){
         return title;
     }
-    public String getSun(){
-        return sun;
+    public String getWeather_type(){
+        return weather_type;
     }
     public String getDescription(){
         return description;
@@ -57,7 +57,8 @@ public class HandleXML {
                             }
                         }
                         else if(name.equals("weather_type_short")){
-                            sun = text;
+                            weather_type = text;
+                            //viewImgWeather(weather_type);
                         }
 //                        else if(name.equals("description")){
 //                            description = text;
@@ -73,6 +74,9 @@ public class HandleXML {
             e.printStackTrace();
         }
     }
+
+
+
     public void fetchXML(){
         Thread thread = new Thread(new Runnable(){
             @Override

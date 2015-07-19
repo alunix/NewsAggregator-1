@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ua.art.newsaggregator.R;
@@ -17,7 +17,8 @@ public class WeatherFragment extends Fragment {
     //private String finalUrl="http://tutorialspoint.com/android/sampleXML.xml";
     private HandleXML obj;
     private TextView factTemperatureText;
-    private TextView sunText;
+    private TextView weatherText;
+    private ImageView weatherTypeImage;
     private Button button;
 
     @Override
@@ -30,8 +31,9 @@ public class WeatherFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         factTemperatureText = (TextView)getActivity().findViewById(R.id.factTemperatureText);
-        sunText = (TextView)getActivity().findViewById(R.id.sunText);
+        weatherText = (TextView)getActivity().findViewById(R.id.sunText);
         button = (Button)getActivity().findViewById(R.id.wearherBtn);
+        weatherTypeImage = (ImageView)getActivity().findViewById(R.id.weatherTypeImage);
 
         View.OnClickListener oclBtnOk = new View.OnClickListener() {
             @Override
@@ -51,8 +53,26 @@ public class WeatherFragment extends Fragment {
         obj.fetchXML();
         while(obj.parsingComplete);
         factTemperatureText.setText(obj.getTitle());
-        sunText.setText(obj.getSun());
+        viewImgWeather(obj.getWeather_type());
+        weatherText.setText(obj.getWeather_type());
 //        description.setText(obj.getDescription());
+    }
+
+    private void viewImgWeather(String weather_type){
+        if (weather_type.equals("ясно"))
+            weatherTypeImage.setImageResource(R.drawable.sunny39);
+        else if (weather_type.equals("малооблачно"))
+            weatherTypeImage.setImageResource(R.drawable.cloudy19);
+        else if (weather_type.equals("переменная облачность"))
+            weatherTypeImage.setImageResource(R.drawable.cloudy19);
+        else if (weather_type.equals("облачно"))
+            weatherTypeImage.setImageResource(R.drawable.cloudy);
+        else if (weather_type.equals("облачно, дождь, гроза"))
+            weatherTypeImage.setImageResource(R.drawable.rainy24);
+        else if (weather_type.equals("облачно, дождь"))
+            weatherTypeImage.setImageResource(R.drawable.rainy24);
+        else if (weather_type.equals("дождь"))
+            weatherTypeImage.setImageResource(R.drawable.rainy24);
     }
 
 
