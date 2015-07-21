@@ -4,21 +4,10 @@ import android.content.Context;
 
 import com.ua.art.newsaggregator.smartDroid.CategoryStatus;
 
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-
 public class Preferences {
 
     private static final String PREFERENCES = "preferences";
     private static final String PASSWORD = "password";
-    private static final String PUBLIC_KEY = "publicKey";
     private static final String LOGIN = "login";
     private static final String CATEGORY = "category";
     private static final String CATEGORY_LIKE = "categoryLike";
@@ -32,15 +21,6 @@ public class Preferences {
         new CategoryStatus();
     }
 
-
-    public static void savePublicKey(String key)
-            throws NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException,
-            IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException {
-        sContext.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
-                .edit()
-                .putString(PUBLIC_KEY, key)
-                .commit();
-    }
 
     public static String getLogin() {
         return sContext.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).getString(LOGIN, "");
@@ -83,10 +63,6 @@ public class Preferences {
                 .edit()
                 .putString(CATEGORY_NOTLIKE, CategoryStatus.convertToStr(CategoryStatus.notLikeCategoryStats))
                 .commit();
-    }
-
-    public static String getPublicKey() {
-        return sContext.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).getString(PUBLIC_KEY, "");
     }
 
     public static void clearAll() {

@@ -2,7 +2,16 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/window_background_news</item>
+        <item name="android:textColor">@color/window_text_news</item>
+        <item name="android:buttonStyle">@style/BtnTheme</item>
+    </style>
+    
+    <style name="BtnTheme" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_news</item>
+
     </style>
 
+    <color name="window_background_news">#370903</color>
+    <color name="window_text_news">#F0E68C</color>
 </resources>

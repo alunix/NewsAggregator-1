@@ -1,6 +1,8 @@
 package com.ua.art.newsaggregator;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -18,9 +20,11 @@ public class MainActivity extends ActionBarActivity {
     private static final int LOGIN_ACTIVITY = 0;
     public static final String TAG = "MyLog";
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE); // << not top-panel
         setContentView(R.layout.main);
         new Preferences(this);
 
@@ -33,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
         Log.v(TAG, "isLogin() = " + isLogin());
 
         CategoryStatus categoryStatus = new CategoryStatus();
+
     }
 
     private boolean isLogin() {

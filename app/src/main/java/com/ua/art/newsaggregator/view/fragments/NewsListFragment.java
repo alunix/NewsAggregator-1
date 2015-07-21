@@ -1,6 +1,5 @@
 package com.ua.art.newsaggregator.view.fragments;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,7 +23,7 @@ import java.util.HashMap;
 
 public class NewsListFragment extends Fragment {
 
-    private ProgressDialog progressDialog;
+    //private ProgressDialog progressDialog;
     private static final String URL = "http://www.webstudia.dp.ua/n/test";  // http://api.androidhive.info/contacts/
 
 
@@ -61,10 +60,10 @@ public class NewsListFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage(getString(R.string.please_wait));
-            progressDialog.setCancelable(false);
-            progressDialog.show();
+//            progressDialog = new ProgressDialog(getActivity());
+//            progressDialog.setMessage(getString(R.string.please_wait));
+//            progressDialog.setCancelable(false);
+//            progressDialog.show();
         }
 
         @Override
@@ -111,9 +110,9 @@ public class NewsListFragment extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            if (progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
+//            if (progressDialog.isShowing()){
+//                progressDialog.dismiss();
+//            }
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), newsList,
                     R.layout.item_list_news, new String[]{TAG_TITLE, TAG_DESCRIPTION,
