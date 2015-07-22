@@ -25,10 +25,12 @@ public class SettingsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button btnExit = (Button)view.findViewById(R.id.btnExitLogin);
-        btnExit.setOnClickListener(exitBtn);
+        btnExit.setOnClickListener(pressBtn);
+        Button colorBtn = (Button)view.findViewById(R.id.colorButton);
+        colorBtn.setOnClickListener(pressBtn);
     }
 
-    private OnClickListener exitBtn = new OnClickListener() {
+    private OnClickListener pressBtn = new OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
@@ -38,6 +40,8 @@ public class SettingsFragment extends Fragment {
                     //Toast.makeText(context, "text", Toast.LENGTH_SHORT).show();
                     Log.v(TAG, "Exit");
                     break;
+                case R.id.colorButton:
+                    //R.color.window_background_news =
                 default:
                     Log.v(TAG, "No exit");
                     break;

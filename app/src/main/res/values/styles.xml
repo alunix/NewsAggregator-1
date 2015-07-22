@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/window_background_news</item>
         <item name="android:textColor">@color/window_text_news</item>
         <item name="android:buttonStyle">@style/BtnTheme</item>
