@@ -12,6 +12,6 @@
 
     </style>
 
-    <color name="window_background_news">#370903</color>
-    <color name="window_text_news">#F0E68C</color>
+    <color name="window_background_news">#ff1d85bd</color>
+    <color name="window_text_news">#ffe7f6fd</color>
 </resources>

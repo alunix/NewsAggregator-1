@@ -51,7 +51,8 @@
             android:layout_height="wrap_content"
             android:text="Date"
             android:id="@+id/dateItemText"
-            android:layout_marginLeft="50dp" />
+            android:layout_marginLeft="50dp"
+            android:textColor="#ffa47c0f" />
     </LinearLayout>
 
 </LinearLayout>

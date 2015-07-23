@@ -75,7 +75,7 @@ public class NewsTable {
         //button.setPadding(10, 10, 10, 10);
 
         LinearLayout.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(4, 4, 4, 4);
+        layoutParams.setMargins(2, 6, 2, 2);
 
         //layoutParams.span = 1;
         //layoutParams.setMargins(3, 3, 3, 3);
