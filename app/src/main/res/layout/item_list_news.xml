@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="10dp"
@@ -12,7 +12,7 @@
 
     <TextView
         android:id="@+id/titleItemText"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
         android:paddingTop="6dip"
@@ -23,12 +23,12 @@
 
     <!-- Email label -->
     <TextView
-        android:id="@+id/deskripItemText"
-        android:layout_width="fill_parent"
+        android:id="@+id/descripItemText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
         android:textColor="#acacac"
-        android:text="Deskription" />
+        android:text="Description" />
 
     <!-- Mobile number label -->
 

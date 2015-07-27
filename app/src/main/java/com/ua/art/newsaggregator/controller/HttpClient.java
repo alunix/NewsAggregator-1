@@ -6,7 +6,10 @@ import com.ua.art.newsaggregator.model.ResponseObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.ClientConnectionManager;
@@ -23,9 +26,11 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public class HttpClient {
     private static HttpClient instance;
@@ -41,12 +46,12 @@ public class HttpClient {
         return instance;
     }
 
-    public ResponseObject sendPost(String url, HttpEntity httpEntity) throws NoSuchAlgorithmException, KeyManagementException, IOException {
+    public ResponseObject sendPost(String url, List<NameValuePair> params) throws NoSuchAlgorithmException, KeyManagementException, IOException {
         ResponseObject result;
         DefaultHttpClient httpClient = returnHttpClient();
         try {
             HttpPost httppost = new HttpPost(url);
-            httppost.setEntity(httpEntity);
+            httppost.setEntity(new UrlEncodedFormEntity(params));
             ResponseHandler<ResponseObject> responseHandler = new ResponseHandler<ResponseObject>() {
 
                 public ResponseObject handleResponse(final HttpResponse response) throws IOException {
@@ -80,6 +85,10 @@ public class HttpClient {
             httpEntity = httpResponse.getEntity();
             response = EntityUtils.toString(httpEntity);
 
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

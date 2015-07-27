@@ -48,7 +48,8 @@
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/settingsListView" />
+                android:id="@+id/settingsListView"
+                android:layout_weight="12.35" />
 
         </LinearLayout>
     </ScrollView>

@@ -13,13 +13,20 @@ import android.widget.SimpleAdapter;
 
 import com.ua.art.newsaggregator.R;
 import com.ua.art.newsaggregator.controller.HttpClient;
+import com.ua.art.newsaggregator.model.ResponseObject;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class NewsListFragment extends Fragment {
 
@@ -68,12 +75,42 @@ public class NewsListFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... arg0) {
-            HttpClient sh = new HttpClient();
-            String jsonStr = sh.sendGet(URL);
-            Log.d("Response: ", "> " + jsonStr);
-            if (jsonStr != null) {
+            loadJSON(URL);
+            return null;
+        }
+
+        public ResponseObject loadJSON(String url) {
+            HttpClient hClient = new HttpClient();
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("my_param", "param_value"));
+            ResponseObject json = null;
+            try {
+                json = hClient.sendPost(url, params);
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            } catch (KeyManagementException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return json;
+            //------------------------------------------------
+
+        }
+
+
+
+
+        private void getJson(JSONObject jsonObj){
+            //List<NameValuePair> news = new ArrayList<NameValuePair>();
+            //String jsonStr = hClient.sendPost(URL, news);
+//            Log.d("Response: ", "> " + jsonObj);
+//            if (jsonObj != null) {
+//                super.onPostExecute(jsonObj);
+//                //String res = "";
+
                 try {
-                    JSONObject jsonObj = new JSONObject(jsonStr);
+                    //JSONObject jsonObj = new JSONObject(jsonStr);
                     news = jsonObj.getJSONArray(TAG_NEWS);
                     for (int i = 0; i < news.length(); i++) {
                         JSONObject c = news.getJSONObject(i);
@@ -100,24 +137,32 @@ public class NewsListFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            } else {
-                Log.e("ServiceHandler", "Couldn't get any data from the url");
-            }
-
-            return null;
+            } 
         }
 
+
+
+
+
         @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
+        protected void onPostExecute(JSONObject jsonObj) {
+            if (jsonObj != null) {
+                super.onPostExecute(jsonObj);
+                getJson(jsonObj);
+            }
+            else {
+            Log.e("ServiceHandler", "Couldn't get any data from the url");
+    }
+
 //            if (progressDialog.isShowing()){
 //                progressDialog.dismiss();
 //            }
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), newsList,
-                    R.layout.item_list_news, new String[]{TAG_TITLE, TAG_DESCRIPTION,
-                    TAG_SOURCE, TAG_DATE}, new int[]{R.id.titleItemText,
-                    R.id.deskripItemText, R.id.sourseItemText, R.id.dateItemText});
+                    R.layout.item_list_news,
+                    new String[]{TAG_TITLE, TAG_DESCRIPTION, TAG_SOURCE, TAG_DATE},
+                    new int[]{R.id.titleItemText, R.id.descripItemText, R.id.sourseItemText, R.id.dateItemText}
+            );
 
             lv.setAdapter(adapter);
         }
