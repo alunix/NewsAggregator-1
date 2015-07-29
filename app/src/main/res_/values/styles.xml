@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/window_background_news</item>
+        <item name="android:textColor">@color/window_text_news</item>
+        <item name="android:buttonStyle">@style/BtnTheme</item>
+    </style>
+    
+    <style name="BtnTheme" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_news</item>
+
+    </style>
+
+    <color name="window_background_news">#ff1d85bd</color>
+    <color name="window_text_news">#ffe7f6fd</color>
+</resources>

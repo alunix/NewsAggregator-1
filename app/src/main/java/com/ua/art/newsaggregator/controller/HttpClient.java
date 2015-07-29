@@ -1,17 +1,12 @@
 package com.ua.art.newsaggregator.controller;
 
 import com.ua.art.newsaggregator.MSslSocketFactoryNews;
-import com.ua.art.newsaggregator.model.ResponseObject;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
@@ -25,12 +20,15 @@ import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.security.KeyManagementException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.security.KeyStore;
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 public class HttpClient {
     private static HttpClient instance;
@@ -46,32 +44,88 @@ public class HttpClient {
         return instance;
     }
 
-    public ResponseObject sendPost(String url, List<NameValuePair> params) throws NoSuchAlgorithmException, KeyManagementException, IOException {
-        ResponseObject result;
-        DefaultHttpClient httpClient = returnHttpClient();
+    public static String sendPost(String targetURL, String urlParameters)
+    {
+        URL url;
+        HttpURLConnection connection = null;
         try {
-            HttpPost httppost = new HttpPost(url);
-            httppost.setEntity(new UrlEncodedFormEntity(params));
-            ResponseHandler<ResponseObject> responseHandler = new ResponseHandler<ResponseObject>() {
+            //Create connection
+            url = new URL(targetURL);
+            connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type",
+                    "application/x-www-form-urlencoded");
 
-                public ResponseObject handleResponse(final HttpResponse response) throws IOException {
-                    ResponseObject resp = new ResponseObject();
-                    resp.setStatus(response.getStatusLine().getStatusCode());
-                    resp.setResponse(null);
-                    if (resp.getStatus()== 200) {
-                        HttpEntity entity = response.getEntity();
-                        resp.setResponse((entity != null) ? EntityUtils.toString(entity) : null);
-                    }
-                    return resp;
-                }
-            };
-            result = httpClient.execute(httppost, responseHandler);
-        } catch (Exception ex) {
-            result = new ResponseObject();
-            result.setResponse(ex.getMessage());
+            connection.setRequestProperty("Content-Length", "" +
+                    Integer.toString(urlParameters.getBytes().length));
+            connection.setRequestProperty("Content-Language", "en-US");
+
+            connection.setUseCaches (false);
+            connection.setDoInput(true);
+            connection.setDoOutput(true);
+
+            //Send request
+            DataOutputStream wr = new DataOutputStream (
+                    connection.getOutputStream ());
+            wr.writeBytes (urlParameters);
+            wr.flush ();
+            wr.close ();
+
+            //Get Response
+            InputStream is = connection.getInputStream();
+            BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+            String line;
+            StringBuffer response = new StringBuffer();
+            while((line = rd.readLine()) != null) {
+                response.append(line);
+                response.append('\r');
+            }
+            rd.close();
+            return response.toString();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return null;
+
+        } finally {
+
+            if(connection != null) {
+                connection.disconnect();
+            }
         }
-        return result;
     }
+
+
+
+
+
+//public ResponseObject sendPost(String url, HttpEntity httpEntity) throws NoSuchAlgorithmException, KeyManagementException, IOException {
+//        ResponseObject result;
+//        DefaultHttpClient httpClient = returnHttpClient();
+//        try {
+//            HttpPost httppost = new HttpPost(url);
+//            httppost.setEntity(httpEntity);
+//            ResponseHandler<ResponseObject> responseHandler = new ResponseHandler<ResponseObject>() {
+//
+//                public ResponseObject handleResponse(final HttpResponse response) throws IOException {
+//                    ResponseObject resp = new ResponseObject();
+//                    resp.setStatus(response.getStatusLine().getStatusCode());
+//                    resp.setResponse(null);
+//                    if (resp.getStatus()== 200) {
+//                        HttpEntity entity = response.getEntity();
+//                        resp.setResponse((entity != null) ? EntityUtils.toString(entity) : null);
+//                    }
+//                    return resp;
+//                }
+//            };
+//            result = httpClient.execute(httppost, responseHandler);
+//        } catch (Exception ex) {
+//            result = new ResponseObject();
+//            result.setResponse(ex.getMessage());
+//        }
+//        return result;
+//    }
 
     public String sendGet(String url){
         String response = null;

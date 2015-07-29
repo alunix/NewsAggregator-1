@@ -11,8 +11,6 @@ import com.ua.art.newsaggregator.model.ResponseObject;
 import org.apache.http.HttpEntity;
 
 import java.io.IOException;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 
 public abstract class RequestController {
 
@@ -48,11 +46,11 @@ public abstract class RequestController {
 
         @Override
         protected ResponseObject doInBackground(Void... params) {
-            try {
-                return mHttpClient.sendPost(mUrl, mHttpEntity);
-            } catch (NoSuchAlgorithmException | KeyManagementException | IOException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                return mHttpClient.sendPost(mUrl, mHttpEntity);
+//            } catch (NoSuchAlgorithmException | KeyManagementException | IOException e) {
+//                e.printStackTrace();
+//            }
             return null;
         }
 
