@@ -18,7 +18,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -88,7 +87,7 @@ public class NewsListFragment extends Fragment {
                     "\"moduleId\" : \"1\"," +
                     "\"categoryId\" : \"1\"," +
                     "\"sourceId\" : \"1\"," +
-                    "\"pubDate\" : \"thu, 30 jul 2015 07:26:46 +0300\"," +
+                    "\"pubDate\" : \"thu, 30 jul 2015 13:42:00 +0300\"," +
                     "\"quantity\" : \"1\"," +
                     "\"older\" : \"true\"" +
                     "}";

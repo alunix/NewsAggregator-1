@@ -5,7 +5,7 @@ import com.ua.art.newsaggregator.R;
 public enum SettingsNews {
 
     STORE_NEWS("storeNews", "Хранить новости", R.layout.selection_modules, 1),
-    AUTOUPDATING("autoupdating", "Хранить новости", R.layout.selection_modules, 1);
+    AUTOUPDATING("autoupdating", "Автообновление", R.layout.selection_modules, 1);
 
     private final String storeNews;
     private final String name;

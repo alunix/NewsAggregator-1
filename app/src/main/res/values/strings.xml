@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">NewsAggregator</string>
 
@@ -14,6 +15,12 @@
     <string name="btnNextSelectResource">Next</string>
     <string name="textSelectResource">Will choose a resource</string>
     <string name="textSelectModules">Выберите то, что вам интересно</string>
+    
+    <string-array name="setings">
+        <item>Хранить новости</item>
+        <item>Автообновление</item>
+    </string-array>
+    
 
     <string name="news_en">news</string>
     <string name="news_ru">Новости</string>
