@@ -20,6 +20,25 @@
         <item>Хранить новости</item>
         <item>Автообновление</item>
     </string-array>
+    <string name="title_settings_saveNews">Хранить новости</string>
+    <string name="title_settings_autoupdate">Автообновление</string>
+
+    <string-array name="settings_saveNews">
+        <item>12 часов</item>
+        <item>1 день</item>
+        <item>2 дня</item>
+        <item>3 дня</item>
+    </string-array>
+    
+    <string-array name="settings_autoupdate">
+        <item>Никогда</item>
+        <item>15 минут</item>
+        <item>30 минут</item>
+        <item>1 час</item>
+        <item>3 часа</item>
+        <item>6 часов</item>
+        <item>12 часов</item>
+    </string-array>
     
 
     <string name="news_en">news</string>
@@ -64,4 +83,8 @@
     <string name="textInput">Войти</string>
     <string name="temperaturaTodayText">Температура сегодня:</string>
     <string name="wearherBtn">Узнать погоду</string>
+    <string name="backTextBtn">Назад</string>
+    <string name="cancelTextBtn">Отмена</string>
+    <string name="okTextBtn">ОК</string>
+    <string name="saveTextBtn">Сохранить</string>
 </resources>

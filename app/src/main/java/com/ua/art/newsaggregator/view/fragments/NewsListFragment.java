@@ -87,11 +87,12 @@ public class NewsListFragment extends Fragment {
                     "\"moduleId\" : \"1\"," +
                     "\"categoryId\" : \"1\"," +
                     "\"sourceId\" : \"1\"," +
-                    "\"pubDate\" : \"thu, 30 jul 2015 13:42:00 +0300\"," +
-                    "\"quantity\" : \"1\"," +
+                    "\"pubDate\" : \"thu, 30 jul 2015 12:46:43 +0300\"," +
+                    "\"quantity\" : \"10\"," +
                     "\"older\" : \"true\"" +
                     "}";
             String jsonStr = sh.sendPost(URL, param);
+            //jsonStr = jsonStr.indexOf("}");
 
 //            byte[] utf8 = new byte[0];
 //            try {
@@ -106,6 +107,7 @@ public class NewsListFragment extends Fragment {
             Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
+                    //JSONObject jsonObj = new JSONObject(jsonStr);
                     JSONObject jsonObj = new JSONObject(jsonStr);
                     //JSONObject jsonObj = new JSONObject("{\"phonetype\":\"N95\",\"cat\":\"WP\"}");
                     news = jsonObj.getJSONArray(TAG_NEWS);
