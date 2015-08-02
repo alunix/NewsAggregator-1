@@ -93,11 +93,12 @@ public class SettingsFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(TAG, "itemClick = " + position + ", id = " + id);
                 switch (position) {
+                    case 0:
+                        showDialog(AUTOUPDATE_DIALOG_SETTINGS);
+                        break;
                     case 1:
                         showDialog(SAVENEWS_DIALOG_SETTINGS);
                         break;
-                    case 2:
-                        showDialog(AUTOUPDATE_DIALOG_SETTINGS);
                 }
             }
         });
@@ -110,33 +111,8 @@ public class SettingsFragment extends Fragment {
         AlertDialog.Builder builderDialog = new AlertDialog.Builder(getActivity());
         switch(id){
             case SAVENEWS_DIALOG_SETTINGS:
-            //builderDialog.setTitle(R.string.title_settings_saveNews);
-                //builderDialog.setSingleChoiceItems(settingsSaveNews, -1, (DialogInterface.OnClickListener) myClickListener);
-
                 builderDialog.setTitle(R.string.title_settings_saveNews)
                         .setCancelable(true)
-
-//                                // add a button to CLOSE the dialog
-//                        .setNegativeButton(R.string.backTextBtn,
-//                                new DialogInterface.OnClickListener() {
-//                                    public void onClick(DialogInterface dialog,
-//                                                        int id) {
-//                                        dialog.cancel();
-//                                    }
-//                                })
-//
-//                                // add a button to OK the dialog
-//                        .setPositiveButton(R.string.okTextBtn,
-//                                new DialogInterface.OnClickListener() {
-//                                    public void onClick(DialogInterface dialog,
-//                                                        int id) {
-//                                        //
-//                                        //  SAVE settings and dialog.cancel
-//                                        //
-//                                        dialog.cancel();
-//                                    }
-//                                })
-
                                 // add switches
                         .setSingleChoiceItems(settingsSaveNews, 1,
                                 new DialogInterface.OnClickListener() {
@@ -186,23 +162,4 @@ public class SettingsFragment extends Fragment {
         }
     };
 
-
-
-
-
-
-
-//    OnClickListener dialogMyClickListener = new OnClickListener() {
-//
-//
-//        public void onClick(DialogInterface dialog, int which) {
-//            ListView lv = ((AlertDialog) dialog).getListView();
-//            if (which == Dialog.BUTTON_POSITIVE)
-//                // выводим в лог позицию выбранного элемента
-//                Log.d(TAG, "pos = " + lv.getCheckedItemPosition());
-//            else
-//                // выводим в лог позицию нажатого элемента
-//                Log.d(TAG, "which = " + which);
-//        }
-//    };
 }
