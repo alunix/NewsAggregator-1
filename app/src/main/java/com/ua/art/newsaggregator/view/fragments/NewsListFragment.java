@@ -92,24 +92,11 @@ public class NewsListFragment extends Fragment {
                     "\"older\" : \"true\"" +
                     "}";
             String jsonStr = sh.sendPost(URL, param);
-            //jsonStr = jsonStr.indexOf("}");
-
-//            byte[] utf8 = new byte[0];
-//            try {
-//                utf8 = jsonStr.getBytes("UTF-8");
-//                jsonStr = new String(utf8, "UTF-8");
-//            } catch (UnsupportedEncodingException e) {
-//                e.printStackTrace();
-//            }
-
-
 
             Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
-                    //JSONObject jsonObj = new JSONObject(jsonStr);
                     JSONObject jsonObj = new JSONObject(jsonStr);
-                    //JSONObject jsonObj = new JSONObject("{\"phonetype\":\"N95\",\"cat\":\"WP\"}");
                     news = jsonObj.getJSONArray(TAG_NEWS);
                     for (int i = 0; i < news.length(); i++) {
                         JSONObject c = news.getJSONObject(i);

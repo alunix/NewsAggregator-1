@@ -146,7 +146,7 @@ public class ORMLiteActivity extends OrmLiteBaseListActivity<DatabaseHelper> {
 		}
 		return true;
 	}
-
+	//TODO add table SQLitle
 	//--------------------------------------------test-----------------------------
 	private void createFakeEntriesTEST() {
 		// Create Two test Module

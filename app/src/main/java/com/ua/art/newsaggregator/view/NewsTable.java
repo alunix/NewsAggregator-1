@@ -34,7 +34,9 @@ public class NewsTable {
 
         TableLayout tableLayout = new TableLayout(mContext);
         //tableLayout.setGravity(Gravity.CENTER_HORIZONTAL);
-        tableLayout.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+        tableLayout.setLayoutParams(new TableLayout.LayoutParams(
+                TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT
+        ));
         tableLayout.setWeightSum(4);
 
         double newsCount = (double) News.values().length;
@@ -47,7 +49,9 @@ public class NewsTable {
     private void setParamsForLayout(LinearLayout linearLayout) {
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setGravity(Gravity.CENTER_HORIZONTAL);
-        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
     }
 
     private View prepareRow() {

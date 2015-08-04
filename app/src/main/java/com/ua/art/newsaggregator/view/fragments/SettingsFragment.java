@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ua.art.newsaggregator.Preferences;
 import com.ua.art.newsaggregator.R;
@@ -29,6 +30,7 @@ public class SettingsFragment extends Fragment {
 
     //private ListView settingsListView;
     //private ArrayList<HashMap<String, String>> settingsList;
+    private TextView loginText;
     private String[] settingsItemName;
     private String[] settingsSaveNews;
     private String[] settingsAutoupdate;
@@ -48,6 +50,7 @@ public class SettingsFragment extends Fragment {
         btnExit.setOnClickListener(pressBtn);
         Button colorBtn = (Button)view.findViewById(R.id.colorButton);
         colorBtn.setOnClickListener(pressBtn);
+        loginText = (TextView)view.findViewById(R.id.loginText);
         //settingsList = new ArrayList<>();
         settingsItemName = getResources().getStringArray(R.array.setings);
         Arrays.sort(settingsItemName);
@@ -59,6 +62,11 @@ public class SettingsFragment extends Fragment {
         settingsListView = (ListView)view.findViewById(R.id.settingsListView);
 //        ingsList.add("Обновление", "30мин.");
         listAdapter();
+        getLoginTextView();
+    }
+
+    private void getLoginTextView(){
+        loginText.setText(Preferences.getLogin());
     }
 
     private OnClickListener pressBtn = new OnClickListener() {
