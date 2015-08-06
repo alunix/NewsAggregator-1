@@ -20,7 +20,7 @@ public class ORMLiteActivity extends OrmLiteBaseListActivity<DatabaseHelper> {
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main_orm_test);
+		//setContentView(R.layout.main t);
 
 		this.repository = new Repository(getHelper());
 		this.repository.clearData();

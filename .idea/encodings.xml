@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/ConnectionController.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/Constants.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/MSslSocketFactoryNews.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/MainActivity.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/Preferences.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/adapter/MainAdapter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/controller/HandleXML.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/model/entity/Account.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/model/entity/Category.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/model/entity/Item.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/model/entity/Module.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/model/entity/Source.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ua/art/newsaggregator/view/fragments/NewsListFragment.java" charset="UTF-8" />
+  <component name="Encoding">
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
