@@ -10,7 +10,6 @@ import android.util.Log;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.ua.art.newsaggregator.adapter.MainAdapter;
-import com.ua.art.newsaggregator.controller.db.ORMLiteActivity;
 import com.ua.art.newsaggregator.smartDroid.CategoryStatus;
 import com.ua.art.newsaggregator.view.LoginActivity;
 import com.ua.art.newsaggregator.view.LoginActivityReg;
@@ -37,8 +36,8 @@ public class MainActivity extends ActionBarActivity {
         }
         Log.v(TAG, "isLogin() = " + isLogin());
 
-        Intent intent = new Intent(this, ORMLiteActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, ORMLiteActivity.class);
+//        startActivity(intent);
 
         CategoryStatus categoryStatus = new CategoryStatus();
 
