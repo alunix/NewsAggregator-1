@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -49,7 +51,7 @@ public class NewsListFragment extends Fragment {
     private static final String TAG_SOURCEID = "sourceId";
 
 
-    //private static final String TAG_DATE = "date";
+    private static final String LOG_TAG = "date";
 
     private ListView lv;
     private JSONArray news = null;
@@ -96,24 +98,23 @@ public class NewsListFragment extends Fragment {
             Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
-                    JSONObject jsonObj = new JSONObject(jsonStr);
-                    news = jsonObj.getJSONArray(TAG_NEWS);
-                    for (int i = 0; i < news.length(); i++) {
-                        JSONObject c = news.getJSONObject(i);
+                    JSONArray newsArray = new JSONArray(jsonStr);
+                    for (int i = 0; i < newsArray.length(); i++) {
+                        JSONObject c = newsArray.getJSONObject(i);
 
                         String id = c.getString(TAG_ID);
-                        String name = c.getString(TAG_NAME);
-                        String link = c.getString(TAG_LINK);
-                        String description = c.getString(TAG_DESCRIPTION);
-                        String image = c.getString(TAG_IMAGE);
-                        String pubDate = c.getString(TAG_PUBDATE);
-                        String text = c.getString(TAG_TEXT);
-                        String moduleId = c.getString(TAG_MODULEID);
-                        String categoryId = c.getString(TAG_CATEGORYID);
-                        String sourceId = c.getString(TAG_SOURCEID);
+                        String pubDate = checkString(c.getString(TAG_PUBDATE));
+                        String text = checkString(c.getString(TAG_TEXT));
+                        String moduleId = checkString(c.getString(TAG_MODULEID));
+                        String description = checkString(c.getString(TAG_DESCRIPTION));
+                        String categoryId = checkString(c.getString(TAG_CATEGORYID));
+                        String link = checkString(c.getString(TAG_LINK));
+                        String name = checkString(c.getString(TAG_NAME));
+                        String image = checkString(c.getString(TAG_IMAGE));
+                        String sourceId = checkString(c.getString(TAG_SOURCEID));
 
                         HashMap<String, String> contact = new HashMap<>();
-                        contact.put(TAG_ID, id);
+                        contact.put(TAG_ID, checkString(id));
                         contact.put(TAG_NAME, name);
                         contact.put(TAG_LINK, link);
                         contact.put(TAG_DESCRIPTION, description);
@@ -135,6 +136,13 @@ public class NewsListFragment extends Fragment {
             return null;
         }
 
+        private String checkString(String sTag){
+            if (sTag.equals("null"))
+                return "";
+            else
+                return sTag;
+        }
+
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
@@ -143,12 +151,47 @@ public class NewsListFragment extends Fragment {
 //            }
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), newsList,
-                    R.layout.item_list_news, new String[]{TAG_NAME, TAG_DESCRIPTION,
-                    TAG_SOURCEID, TAG_PUBDATE}, new int[]{R.id.titleItemText,
-                    R.id.deskripItemText, R.id.sourseItemText, R.id.dateItemText});
+                    R.layout.item_list_news,
+                    new String[]{
+                            TAG_NAME,
+                            TAG_DESCRIPTION,
+                            TAG_SOURCEID,
+                            TAG_PUBDATE
+                    },
+                    new int[]{
+                            R.id.titleItemText,
+                            R.id.deskripItemText,
+                            R.id.sourseItemText,
+                            R.id.dateItemText
+                    });
 
             lv.setAdapter(adapter);
-        }
-    }
 
+            lv.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                    Log.d(LOG_TAG, "itemClick: position = " + position + ", id = " +id);
+                }
+            });
+
+
+
+
+                // События на выдиление
+//            lv.setOnItemSelectedListener(new OnItemSelectedListener() {
+//                public void onItemSelected(AdapterView<?> parent, View view,
+//                                           int position, long id) {
+//                    Log.d(LOG_TAG, "itemSelect: position = " + position + ", id = "
+//                            + id);
+//                }
+//
+//                @Override
+//                public void onNothingSelected(AdapterView<?> adapterView) {
+//                    Log.d(LOG_TAG, "itemSelect: nothing");
+//                }
+//            });
+
+        }
+
+    }
 }
