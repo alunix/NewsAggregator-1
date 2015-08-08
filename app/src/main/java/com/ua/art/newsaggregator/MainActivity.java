@@ -10,7 +10,7 @@ import android.util.Log;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.ua.art.newsaggregator.adapter.MainAdapter;
-import com.ua.art.newsaggregator.controller.db.ORMLiteActivity;
+import com.ua.art.newsaggregator.controller.db.DbManager;
 import com.ua.art.newsaggregator.smartDroid.CategoryStatus;
 import com.ua.art.newsaggregator.view.LoginActivity;
 import com.ua.art.newsaggregator.view.LoginActivityReg;
@@ -19,16 +19,29 @@ import com.ua.art.newsaggregator.view.LoginActivityReg;
 public class MainActivity extends ActionBarActivity {
 
     private static final int LOGIN_ACTIVITY = 0;
-    public static final String TAG = "MyLog";
+
+    final String LOG_TAG = "dbLogs";
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        DbManager dbManager = new DbManager(this);
+
+
+
+
         //requestWindowFeature(Window.FEATURE_NO_TITLE); // << not top-panel
 
-        Intent intent = new Intent(this, ORMLiteActivity.class);
-        startActivity(intent);
+        //new DbManager(this).execute();
+
+//        dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
+//        RuntimeExceptionDao<Note, Integer> noteDao = dbHelper.getNote
+
+//        Intent intent = new Intent(this, ORMLiteActivity.class);
+//        startActivity(intent);
 
         setContentView(R.layout.main);
         new Preferences(this);
@@ -39,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
             loginUser();
             //loginUserReg();
         }
-        Log.v(TAG, "isLogin() = " + isLogin());
+        Log.v(LOG_TAG, "isLogin() = " + isLogin());
 
 
 

@@ -23,7 +23,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ListNewsView"/>
-        <activity android:name=".controller.db.ORMLiteActivity"/>
         <activity android:name=".view.LoginActivity"
         android:theme="@style/Theme.AppCompat.Light.Dialog"
         android:configChanges="keyboardHidden|orientation|screenSize"/>

@@ -15,6 +15,7 @@ import android.widget.SimpleAdapter;
 
 import com.ua.art.newsaggregator.R;
 import com.ua.art.newsaggregator.controller.HttpClient;
+import com.ua.art.newsaggregator.model.TemplateServer;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,16 +28,6 @@ public class NewsListFragment extends Fragment {
 
     //private ProgressDialog progressDialog;
     protected static final String URL = "http://news.webstudia.dp.ua/index/test";  // http://api.androidhive.info/contacts/
-
-
-//    private static final String TAG_NEWS = "news";
-//    private static final String TAG_CATEGORY = "category";
-//    private static final String TAG_SOURCE = "source";
-//    private static final String TAG_ID_ITEM = "id_item";
-//    private static final String TAG_TITLE = "title";
-//    private static final String TAG_LINK = "link";
-//    private static final String TAG_DESCRIPTION = "description";
-//    private static final String TAG_IMG = "img";
 
     private static final String TAG_NEWS = "news";
     private static final String TAG_ID = "id";
@@ -85,15 +76,9 @@ public class NewsListFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... arg0) {
             HttpClient sh = new HttpClient();
-            String param = "{" +
-                    "\"moduleId\" : \"1\"," +
-                    "\"categoryId\" : \"1\"," +
-                    "\"sourceId\" : \"1\"," +
-                    "\"pubDate\" : \"thu, 30 jul 2015 12:46:43 +0300\"," +
-                    "\"quantity\" : \"10\"," +
-                    "\"older\" : \"true\"" +
-                    "}";
-            String jsonStr = sh.sendPost(URL, param);
+            //String jsonStr = sh.sendPost(URL, param);
+            String jsonStr = sh.sendPost(URL, TemplateServer.requestJsonNews("1", "1", "1", "thu, 30 jul 2015 12:46:43 +0300", "10", "true")
+            );
 
             Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
@@ -103,14 +88,14 @@ public class NewsListFragment extends Fragment {
                         JSONObject c = newsArray.getJSONObject(i);
 
                         String id = c.getString(TAG_ID);
+                        String name = checkString(c.getString(TAG_NAME));
+                        String link = checkString(c.getString(TAG_LINK));
+                        String description = checkString(c.getString(TAG_DESCRIPTION));
+                        String image = checkString(c.getString(TAG_IMAGE));
                         String pubDate = checkString(c.getString(TAG_PUBDATE));
                         String text = checkString(c.getString(TAG_TEXT));
                         String moduleId = checkString(c.getString(TAG_MODULEID));
-                        String description = checkString(c.getString(TAG_DESCRIPTION));
                         String categoryId = checkString(c.getString(TAG_CATEGORYID));
-                        String link = checkString(c.getString(TAG_LINK));
-                        String name = checkString(c.getString(TAG_NAME));
-                        String image = checkString(c.getString(TAG_IMAGE));
                         String sourceId = checkString(c.getString(TAG_SOURCEID));
 
                         HashMap<String, String> contact = new HashMap<>();
@@ -126,6 +111,9 @@ public class NewsListFragment extends Fragment {
                         contact.put(TAG_SOURCEID, sourceId);
                         newsList.add(contact);
                     }
+
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
