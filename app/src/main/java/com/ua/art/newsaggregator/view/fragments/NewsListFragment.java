@@ -1,5 +1,6 @@
 package com.ua.art.newsaggregator.view.fragments;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.SimpleAdapter;
 
 import com.ua.art.newsaggregator.R;
 import com.ua.art.newsaggregator.controller.HttpClient;
+import com.ua.art.newsaggregator.controller.db.DbManager;
 import com.ua.art.newsaggregator.model.TemplateServer;
 
 import org.json.JSONArray;
@@ -28,6 +30,8 @@ public class NewsListFragment extends Fragment {
 
     //private ProgressDialog progressDialog;
     protected static final String URL = "http://news.webstudia.dp.ua/index/test";  // http://api.androidhive.info/contacts/
+
+    private Context context;
 
     private static final String TAG_NEWS = "news";
     private static final String TAG_ID = "id";
@@ -48,6 +52,10 @@ public class NewsListFragment extends Fragment {
     private JSONArray news = null;
     private ArrayList<HashMap<String, String>> newsList;
 
+    public NewsListFragment(Context context) {
+        this.context = context;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_news_list,container,false);
@@ -61,7 +69,6 @@ public class NewsListFragment extends Fragment {
         lv = (ListView) getActivity().findViewById(R.id.news_list);
         new GetNews().execute();
     }
-
 
     private class GetNews extends AsyncTask<Void, Void, Void> {
         @Override
@@ -77,7 +84,7 @@ public class NewsListFragment extends Fragment {
         protected Void doInBackground(Void... arg0) {
             HttpClient sh = new HttpClient();
             //String jsonStr = sh.sendPost(URL, param);
-            String jsonStr = sh.sendPost(URL, TemplateServer.requestJsonNews("1", "1", "1", "thu, 30 jul 2015 12:46:43 +0300", "10", "true")
+            String jsonStr = sh.sendPost(URL, TemplateServer.requestJsonNews("1", "1", "1", "fri, 31 jul 2015 13:00:00 +0300", "10", "true")
             );
 
             Log.d("Response: ", "> " + jsonStr);
@@ -112,7 +119,9 @@ public class NewsListFragment extends Fragment {
                         newsList.add(contact);
                     }
 
-
+    //            DbManager.saveDbNews(newsList);
+                    DbManager dbManager = new DbManager(context);
+                    dbManager.saveDbNews(newsList);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -161,9 +170,6 @@ public class NewsListFragment extends Fragment {
                     Log.d(LOG_TAG, "itemClick: position = " + position + ", id = " +id);
                 }
             });
-
-
-
 
                 // События на выдиление
 //            lv.setOnItemSelectedListener(new OnItemSelectedListener() {

@@ -1,5 +1,6 @@
 package com.ua.art.newsaggregator.adapter;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,9 +13,11 @@ import com.ua.art.newsaggregator.view.fragments.TopNFragment;
 import com.ua.art.newsaggregator.view.fragments.WeatherFragment;
 
 public class MainAdapter extends FragmentPagerAdapter {
+    private Context context;
 
-    public MainAdapter(FragmentManager fm) {
+    public MainAdapter(FragmentManager fm, Context context) {
         super(fm);
+        this.context = context;
     }
     @Override
     public CharSequence getPageTitle(int position) {
@@ -43,7 +46,7 @@ public class MainAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0: {
-                return new NewsListFragment();  //return new NewsListFragment();
+                return new NewsListFragment(context);  //return new NewsListFragment();
             }case 1: {
                 return new ChooseCategoryFragment();
             }case 2:{
@@ -55,7 +58,7 @@ public class MainAdapter extends FragmentPagerAdapter {
             }case 5:{
                 return new SettingsFragment();
             } default:
-                return new NewsListFragment();
+                return new NewsListFragment(context);
         }
     }
 

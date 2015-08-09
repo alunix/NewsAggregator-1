@@ -10,7 +10,6 @@ import android.util.Log;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.ua.art.newsaggregator.adapter.MainAdapter;
-import com.ua.art.newsaggregator.controller.db.DbManager;
 import com.ua.art.newsaggregator.smartDroid.CategoryStatus;
 import com.ua.art.newsaggregator.view.LoginActivity;
 import com.ua.art.newsaggregator.view.LoginActivityReg;
@@ -28,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
 
-        DbManager dbManager = new DbManager(this);
+        //DbManager dbManager = new DbManager(this);
 
 
 
@@ -74,7 +73,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void startApp() {
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        pager.setAdapter(new MainAdapter(getSupportFragmentManager()));
+        pager.setAdapter(new MainAdapter(getSupportFragmentManager(), this));
         PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabs.setViewPager(pager);
     }

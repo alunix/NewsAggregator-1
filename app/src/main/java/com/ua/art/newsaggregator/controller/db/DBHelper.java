@@ -52,13 +52,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // -------------------------- create tables ---------------------
         db.execSQL("CREATE TABLE " + MODULE_TABLENAME + " ("
-                + MODULE_ID + " integer primary key autoincrement,"
+                + MODULE_ID + " text primary key,"         // " integer primary key autoincrement,"
                 + MODULE_NAME + " text"
                 + ");");
         Log.d(LOG_TAG, "--- onCreate database /Module/ ---");
 
         db.execSQL("CREATE TABLE " + SOURCE_TABLENAME + " ("
-                + SOURCE_ID + " integer primary key autoincrement,"
+                + SOURCE_ID + " text primary key,"
                 + SOURCE_NAME + " text,"
                 + SOURCE_URL + " text,"
                 + SOURCE_XML + " text,"
@@ -72,14 +72,14 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d(LOG_TAG, "--- onCreate database /Source/ ---");
 
         db.execSQL("CREATE TABLE " + CATEGORY_TABLENAME + " ("
-                + CATEGORY_ID + " integer primary key autoincrement,"
+                + CATEGORY_ID + " text primary key,"
                 + CATEGORY_NAME + " text,"
                 + CATEGORY_MODULEID + " text"
                 + ");");
         Log.d(LOG_TAG, "--- onCreate database /Category/ ---");
 
         db.execSQL("CREATE TABLE " + ITEM_TABLENAME +" ("
-                + ITEM_ID + " integer primary key autoincrement,"
+                + ITEM_ID + " text primary key,"
                 + ITEM_NAME + " text,"
                 + ITEM_LINK + " text,"
                 + ITEM_DESCRIPTION + " text,"
