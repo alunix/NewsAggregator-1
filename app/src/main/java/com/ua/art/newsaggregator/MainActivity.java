@@ -57,6 +57,8 @@ public class MainActivity extends ActionBarActivity {
 
         CategoryStatus categoryStatus = new CategoryStatus();
 
+
+
     }
 
     private boolean isLogin() {

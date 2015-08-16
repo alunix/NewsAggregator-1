@@ -1,9 +1,8 @@
 package com.ua.art.newsaggregator.view.fragments;
 
-import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -33,7 +32,7 @@ import java.util.HashMap;
 
 public class NewsListFragment extends Fragment {
 
-    //private ProgressDialog progressDialog;
+    private ProgressDialog progressDialog;
     //protected static final String URL = "http://news.webstudia.dp.ua/index/exchangeAll";  // http://api.androidhive.info/contacts/
     protected static final String URL_REQUEST = "http://news.webstudia.dp.ua/index/request";  // http://api.androidhive.info/contacts/
 
@@ -50,6 +49,14 @@ public class NewsListFragment extends Fragment {
     private static final String TAG_MODULEID = "moduleId";
     private static final String TAG_CATEGORYID = "categoryId";
     private static final String TAG_SOURCEID = "sourceId";
+
+
+    private static String requestModuleId = "news";
+    private static String requestCategoryId = "news_politics";
+    private static String requestSourceId = "news_politics_liga";
+    private static String requestPubDate = "sun, 16 aug 2015 16:48:30 +0300";
+    private static String requestQuantity = "10";
+    private static String requestOlder = "true";
 
 
     private static final String LOG_TAG = "date";
@@ -86,12 +93,14 @@ public class NewsListFragment extends Fragment {
 //            progressDialog.show();
         }
 
-        @TargetApi(Build.VERSION_CODES.KITKAT)
+
         @Override
         protected Void doInBackground(Void... arg0) {
             HttpClient sh = new HttpClient();
             //String jsonStr = sh.sendPost(URL, param);
-            String jsonStr = sh.sendPost(URL_REQUEST, TemplateServer.requestJsonNews("news", "news_politics", "news_politics_liga", "fri, 14 aug 2015 17:19:34 +0300", "10", "true"));
+            String jsonStr = sh.sendPost(URL_REQUEST, TemplateServer.requestJsonNews(
+                    requestModuleId, requestCategoryId, requestSourceId,
+                    requestPubDate, requestQuantity, requestOlder));
 
             Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
@@ -194,9 +203,11 @@ public class NewsListFragment extends Fragment {
             });
             // Events for croll
             lv.setOnScrollListener(new OnScrollListener() {
+                int a =0;
                 @Override
                 public void onScrollStateChanged(AbsListView absListView, int scrollState) {
                     Log.d(LOG_TAG, "scrollState = " + scrollState);
+                    a = scrollState;
                 }
 
                 @Override
