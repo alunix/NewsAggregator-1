@@ -1,4 +1,4 @@
-package com.ua.art.newsaggregator.controller;
+package com.ua.art.newsaggregator.controller.db;
 
 import com.ua.art.newsaggregator.model.News;
 import com.ua.art.newsaggregator.service.Settings;
