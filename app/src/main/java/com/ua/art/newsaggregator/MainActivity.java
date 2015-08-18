@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
         }
         Log.v(LOG_TAG, "isLogin() = " + isLogin());
 
-
+        CountSelectCategory countSelC = new CountSelectCategory();  // save Settings button select Category (default)
 
         CategoryStatus categoryStatus = new CategoryStatus();
 

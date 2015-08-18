@@ -54,7 +54,7 @@ public class NewsListFragment extends Fragment {
     private static String requestModuleId = "news";
     private static String requestCategoryId = "news_politics";
     private static String requestSourceId = "news_politics_liga";
-    private static String requestPubDate = "sun, 16 aug 2015 16:48:30 +0300";
+    private static String requestidItem = "20150818061733993";
     private static String requestQuantity = "10";
     private static String requestOlder = "true";
 
@@ -80,10 +80,34 @@ public class NewsListFragment extends Fragment {
 
         newsList = new ArrayList<>();
         lv = (ListView) getActivity().findViewById(R.id.news_list);
-        new GetNews().execute();
+//        new GetNews().execute();
+
+
+        //TODO !!!!!
+//        new GetNews(requestModuleId, "news_" + Settings.nameSelectCategory.get(0), "news_" + Settings.nameSelectCategory.get(0) + "_liga",
+//                requestidItem, requestQuantity, requestOlder).execute();
+
+        new GetNews(requestModuleId, requestCategoryId, requestSourceId,
+                requestidItem, requestQuantity, requestOlder).execute();
     }
 
+
     private class GetNews extends AsyncTask<Void, Void, Void> {
+
+        String requestModuleId, requestCategoryId, requestSourceId,
+                requestidItem, requestQuantity, requestOlder;
+
+
+        public GetNews(String requestModuleId, String requestCategoryId, String requestSourceId,
+                       String requestidItem, String requestQuantity, String requestOlder){
+            this.requestModuleId = requestModuleId;
+            this.requestCategoryId = requestCategoryId;
+            this.requestSourceId = requestSourceId;
+            this.requestidItem = requestidItem;
+            this.requestQuantity = requestQuantity;
+            this.requestOlder = requestOlder;
+        }
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -96,11 +120,12 @@ public class NewsListFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... arg0) {
+
             HttpClient sh = new HttpClient();
             //String jsonStr = sh.sendPost(URL, param);
             String jsonStr = sh.sendPost(URL_REQUEST, TemplateServer.requestJsonNews(
                     requestModuleId, requestCategoryId, requestSourceId,
-                    requestPubDate, requestQuantity, requestOlder));
+                    requestidItem, requestQuantity, requestOlder));
 
             Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
@@ -136,7 +161,6 @@ public class NewsListFragment extends Fragment {
                         newsList.add(contact);
                     }
 
-    //            DbManager.saveDbNews(newsList);
                     DbManager dbManager = new DbManager(context);
                     dbManager.saveDbNews(newsList);
 

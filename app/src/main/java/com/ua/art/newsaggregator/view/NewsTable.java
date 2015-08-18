@@ -3,6 +3,7 @@ package com.ua.art.newsaggregator.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import com.ua.art.newsaggregator.model.News;
+import com.ua.art.newsaggregator.service.Settings;
 
 public class NewsTable {
     final String LOG_TAG = "NTLogs";
@@ -101,6 +103,8 @@ public class NewsTable {
                     news.setClicked(true);
                 }
                 button.setBackground(mContext.getResources().getDrawable(getImgResourceOnClick(news)));
+                CountSelectCategory countSelC = new CountSelectCategory();  // save Settings button select Category
+                Log.d(LOG_TAG, "sumItemOneCategory" + String.valueOf(Settings.sumItemOneCategory));
             }
         });
         return button;

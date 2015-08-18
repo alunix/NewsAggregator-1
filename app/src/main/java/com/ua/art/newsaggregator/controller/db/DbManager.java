@@ -2,6 +2,7 @@ package com.ua.art.newsaggregator.controller.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -97,6 +98,55 @@ public class DbManager {
             Log.d(LOG_TAG, "row inserted," + DBHelper.ITEM_TABLENAME + " ID = " + rowIDi);
         }
         // закрываем подключение к БД
+        dbHelper.close();
+    }
+
+    public void selectDbNews(ArrayList<HashMap<String, String>> newsArr){
+        // create an object data
+        ContentValues cv = new ContentValues();
+
+        // connect to the database
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Log.d(LOG_TAG, "--- Insert in mytable: ---");
+
+        // делаем запрос всех данных из таблицы mytable, получаем Cursor
+        Cursor c = db.query("mytable", null, null, null, null, null, null);
+        // ставим позицию курсора на первую строку выборки
+        // если в выборке нет строк, вернется false
+        if (c.moveToFirst()) {
+
+            // определяем номера столбцов по имени в выборке
+            int idColIndex = c.getColumnIndex("id");
+            int nameColIndex = c.getColumnIndex("name");
+            int linkColIndex = c.getColumnIndex("link");
+            int descriptionColIndex = c.getColumnIndex("description");
+            int imageColIndex = c.getColumnIndex("image");
+            int pubDateColIndex = c.getColumnIndex("pubDate");
+            int textColIndex = c.getColumnIndex("text");
+            int moduleIdColIndex = c.getColumnIndex("moduleId");
+            int categoryIdColIndex = c.getColumnIndex("categoryId");
+            int sourceIdIdColIndex = c.getColumnIndex("sourceId");
+
+            do {
+                // получаем значения по номерам столбцов и пишем все в лог
+                Log.d(LOG_TAG,
+                        "id = " + c.getInt(idColIndex) +
+                        ", name = " + c.getString(nameColIndex) +
+                        ", link = " + c.getString(linkColIndex) +
+                        ", description = " + c.getString(descriptionColIndex) +
+                        ", image = " + c.getString(imageColIndex) +
+                        ", pubDate = " + c.getString(pubDateColIndex) +
+                        ", text = " + c.getString(textColIndex) +
+                        ", moduleId = " + c.getString(moduleIdColIndex) +
+                        ", categoryId = " + c.getString(categoryIdColIndex) +
+                        ", sourceId = " + c.getString(sourceIdIdColIndex));
+                // переход на следующую строку
+                // а если следующей нет (текущая - последняя), то false - выходим из цикла
+            } while (c.moveToNext());
+        } else
+            Log.d(LOG_TAG, "0 rows");
+        c.close();
+        // close the database connection
         dbHelper.close();
     }
 

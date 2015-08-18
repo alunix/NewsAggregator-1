@@ -4,13 +4,13 @@ public class TemplateServer {
 
     public static String requestJsonNews(
             String moduleId, String categoryId, String sourceId,
-            String pubDate, String quantity, String older)
+            String idItem, String quantity, String older)
     {
         String param = "{" +
                 "\"moduleId\" : \"" + moduleId + "\"," +
                 "\"categoryId\" : \"" + categoryId + "\"," +
                 "\"sourceId\" : \"" + sourceId + "\"," +
-                "\"pubDate\" : \"" + pubDate + "\"," +
+                "\"id\" : \"" + idItem + "\"," +
                 "\"quantity\" : \"" + quantity + "\"," +
                 "\"older\" : \"" + older + "\"" +
                 "}";

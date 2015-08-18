@@ -43,6 +43,12 @@
 
     <string name="news_en">news</string>
     <string name="news_ru">Новости</string>
+    <string name="culture_ru">Культура</string>
+    <string name="economics_ru">Экономика</string>
+    <string name="interview_ru">Интервью</string>
+    <string name="world_ru">Мир</string>
+    <string name="video_ru">Видео</string>
+
     <string name="technologies_en">technologies</string>
     <string name="technologies_ru">Технологии</string>
     <string name="design_en">design</string>
