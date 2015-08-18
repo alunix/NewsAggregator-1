@@ -5,7 +5,7 @@ import com.ua.art.newsaggregator.R;
 
 public enum News {
 
-    NEWS(0, "news", R.string.news_en, R.string.news_ru, R.drawable.ic_news_m150, R.drawable.ic_news_m150_bw, false),   // id, name, img-logo Source, pressed button
+    NEWS(0, "news", R.string.news_en, R.string.news_ru, R.drawable.ic_news_m150, R.drawable.ic_news_m150_bw, true),   // id, name, img-logo Source, pressed button
     //TECHNOLOGIES(1, R.string.technologies_en, R.string.technologies_ru, R.drawable.ic_tehnologis_m150, R.drawable.ic_tehnologis_m150_bw, false),
     DESIGN(2, "culture", R.string.design_en, R.string.culture_ru, R.drawable.ic_design_m150, R.drawable.ic_design_m150_bw, false),
     PHOTO(3, "foto", R.string.foto_en, R.string.foto_ru, R.drawable.ic_foto_m150, R.drawable.ic_foto_m150_bw, false),

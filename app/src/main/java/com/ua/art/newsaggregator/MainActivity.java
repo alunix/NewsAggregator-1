@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.ua.art.newsaggregator.adapter.MainAdapter;
+import com.ua.art.newsaggregator.controller.db.CountSelectCategory;
 import com.ua.art.newsaggregator.smartDroid.CategoryStatus;
 import com.ua.art.newsaggregator.view.LoginActivity;
 import com.ua.art.newsaggregator.view.LoginActivityReg;
@@ -56,7 +57,6 @@ public class MainActivity extends ActionBarActivity {
         CountSelectCategory countSelC = new CountSelectCategory();  // save Settings button select Category (default)
 
         CategoryStatus categoryStatus = new CategoryStatus();
-
 
 
     }

@@ -19,9 +19,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Katerina.Knyrik on 05.07.15.
- */
 public class LoginService  extends RequestController {
 
     private static final String LOGIN = "login";

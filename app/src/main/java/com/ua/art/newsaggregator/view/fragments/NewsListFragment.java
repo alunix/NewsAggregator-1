@@ -20,8 +20,10 @@ import android.widget.SimpleAdapter;
 
 import com.ua.art.newsaggregator.R;
 import com.ua.art.newsaggregator.controller.HttpClient;
+import com.ua.art.newsaggregator.controller.QueryServerPushRss;
 import com.ua.art.newsaggregator.controller.db.DbManager;
 import com.ua.art.newsaggregator.model.TemplateServer;
+import com.ua.art.newsaggregator.service.Settings;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,7 +57,7 @@ public class NewsListFragment extends Fragment {
     private static String requestCategoryId = "news_politics";
     private static String requestSourceId = "news_politics_liga";
     private static String requestidItem = "20150818061733993";
-    private static String requestQuantity = "10";
+    private static String requestQuantity = "30";
     private static String requestOlder = "true";
 
 
@@ -87,8 +89,12 @@ public class NewsListFragment extends Fragment {
 //        new GetNews(requestModuleId, "news_" + Settings.nameSelectCategory.get(0), "news_" + Settings.nameSelectCategory.get(0) + "_liga",
 //                requestidItem, requestQuantity, requestOlder).execute();
 
-        new GetNews(requestModuleId, requestCategoryId, requestSourceId,
-                requestidItem, requestQuantity, requestOlder).execute();
+        String sa = Settings.nameSelectCategory.get(0);
+        //--------------download NEWS------------------------------------------download NEWS---------------------------
+        QueryServerPushRss queryServerPushRss = new QueryServerPushRss();
+        new GetNews(requestModuleId, "news_" + Settings.nameSelectCategory.get(0), "news_" + Settings.nameSelectCategory.get(0) + "_liga",
+                "-1", requestQuantity, requestOlder).execute();
+        //------------------------------------------------download NEWS------------------------------------------------
     }
 
 
@@ -159,10 +165,13 @@ public class NewsListFragment extends Fragment {
                         contact.put(TAG_CATEGORYID, categoryId);
                         contact.put(TAG_SOURCEID, sourceId);
                         newsList.add(contact);
+                        //checkingMatch(contact);
                     }
 
                     DbManager dbManager = new DbManager(context);
                     dbManager.saveDbNews(newsList);
+
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -172,6 +181,17 @@ public class NewsListFragment extends Fragment {
             }
 
             return null;
+        }
+
+        // проверка на совпадение и добавление в БД и в ArrayList
+        private void checkingMatch(HashMap<String, String> contact){
+            for (HashMap<String, String> nList : Settings.newsList){
+                if(nList.get(TAG_ID) == contact.get(TAG_ID)){
+                    return;
+                }
+            }
+            Settings.newsList.add(contact);             // add newsList news Item (Settings)
+            newsList.add(contact);
         }
 
         private String checkString(String sTag){

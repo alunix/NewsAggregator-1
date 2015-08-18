@@ -12,6 +12,7 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import com.ua.art.newsaggregator.controller.db.CountSelectCategory;
 import com.ua.art.newsaggregator.model.News;
 import com.ua.art.newsaggregator.service.Settings;
 
