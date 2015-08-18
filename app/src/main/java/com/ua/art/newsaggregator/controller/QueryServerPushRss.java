@@ -27,7 +27,7 @@ public class QueryServerPushRss {
         this.rModuleId = rModuleId;
         this.rCategoryId = rCategoryId;
         this.rSourceId = rSourceId;
-        new QueryServerTask(rModuleId, rCategoryId, rSourceId, rId, rQuantity, rOlder);
+        new QueryServerTask(rModuleId, rCategoryId, rSourceId, rId, rQuantity, rOlder).execute();
     }
 
     private class QueryServerTask extends AsyncTask{
@@ -42,9 +42,10 @@ public class QueryServerPushRss {
         public QueryServerTask(String moduleId, String categoryId, String sourceId, String id, String quantity, String older) {
             this.moduleId = moduleId;
             this.categoryId = categoryId;
-            this.sourceId = id;
-            this.sourceId = quantity;
-            this.sourceId = older;
+            this.sourceId = sourceId;
+            this.id = "";
+            this.quantity = "";
+            this.older = "";
         }
         @Override
         protected Object doInBackground(Object[] objects) {

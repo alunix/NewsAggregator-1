@@ -85,15 +85,21 @@ public class NewsListFragment extends Fragment {
 //        new GetNews().execute();
 
 
-        //TODO !!!!!
-//        new GetNews(requestModuleId, "news_" + Settings.nameSelectCategory.get(0), "news_" + Settings.nameSelectCategory.get(0) + "_liga",
-//                requestidItem, requestQuantity, requestOlder).execute();
 
-        String sa = Settings.nameSelectCategory.get(0);
         //--------------download NEWS------------------------------------------download NEWS---------------------------
-        QueryServerPushRss queryServerPushRss = new QueryServerPushRss();
-        new GetNews(requestModuleId, "news_" + Settings.nameSelectCategory.get(0), "news_" + Settings.nameSelectCategory.get(0) + "_liga",
-                "-1", requestQuantity, requestOlder).execute();
+
+
+
+        int category = 0;
+
+        new QueryServerPushRss(
+                requestModuleId,
+                "news_" + Settings.nameSelectCategory.get(category),
+                "news_" + Settings.nameSelectCategory.get(category) + "_liga");
+
+        new GetNews(requestModuleId, "news_" + Settings.nameSelectCategory.get(category),
+                "news_" + Settings.nameSelectCategory.get(category) + "_liga",
+                "-1", String.valueOf(Settings.sumItemOneCategory), requestOlder).execute();
         //------------------------------------------------download NEWS------------------------------------------------
     }
 
