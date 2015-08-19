@@ -2,6 +2,7 @@ package com.ua.art.newsaggregator.view.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import com.ua.art.newsaggregator.controller.QueryServerPushRss;
 import com.ua.art.newsaggregator.controller.db.DbManager;
 import com.ua.art.newsaggregator.model.TemplateServer;
 import com.ua.art.newsaggregator.service.Settings;
+import com.ua.art.newsaggregator.view.BrowserNews;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,14 +54,12 @@ public class NewsListFragment extends Fragment {
     private static final String TAG_CATEGORYID = "categoryId";
     private static final String TAG_SOURCEID = "sourceId";
 
-
     private static String requestModuleId = "news";
     private static String requestCategoryId = "news_politics";
     private static String requestSourceId = "news_politics_liga";
     private static String requestidItem = "20150818061733993";
     private static String requestQuantity = "30";
     private static String requestOlder = "true";
-
 
     private static final String LOG_TAG = "date";
 
@@ -87,11 +87,7 @@ public class NewsListFragment extends Fragment {
 
 
         //--------------download NEWS------------------------------------------download NEWS---------------------------
-
-
-
         int category = 0;
-
         new QueryServerPushRss(
                 requestModuleId,
                 "news_" + Settings.nameSelectCategory.get(category),
@@ -102,7 +98,6 @@ public class NewsListFragment extends Fragment {
                 "-1", String.valueOf(Settings.sumItemOneCategory), requestOlder).execute();
         //------------------------------------------------download NEWS------------------------------------------------
     }
-
 
     private class GetNews extends AsyncTask<Void, Void, Void> {
 
@@ -128,7 +123,6 @@ public class NewsListFragment extends Fragment {
 //            progressDialog.setCancelable(false);
 //            progressDialog.show();
         }
-
 
         @Override
         protected Void doInBackground(Void... arg0) {
@@ -176,8 +170,6 @@ public class NewsListFragment extends Fragment {
 
                     DbManager dbManager = new DbManager(context);
                     dbManager.saveDbNews(newsList);
-
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -231,10 +223,21 @@ public class NewsListFragment extends Fragment {
 
             lv.setAdapter(adapter);
 
+            // Click Item
             lv.setOnItemClickListener(new OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                    Log.d(LOG_TAG, "itemClick: position = " + position + ", id = " +id);
+                    Log.d(LOG_TAG, "itemClick: position = " + position + ", id = " + id);
+
+                    String urlNews = newsList.get(position).get(TAG_LINK).toString();
+
+//                    Uri uriUrl = Uri.parse("http://www.google.com/");
+                    Intent intentNews = new Intent(context,  BrowserNews.class);
+                    intentNews.putExtra("urlNews", urlNews);
+                    startActivity(intentNews);
+
+
+                    //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")));
                 }
             });
 

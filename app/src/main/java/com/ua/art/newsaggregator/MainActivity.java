@@ -30,7 +30,8 @@ public class MainActivity extends ActionBarActivity {
 
         //DbManager dbManager = new DbManager(this);
 
-
+//        Intent intent = new Intent(this, BrowserNews.class);
+//        startActivity(intent);
 
 
         //requestWindowFeature(Window.FEATURE_NO_TITLE); // << not top-panel

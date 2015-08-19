@@ -49,6 +49,7 @@
     <string name="world_ru">Мир</string>
     <string name="video_ru">Видео</string>
 
+
     <string name="technologies_en">technologies</string>
     <string name="technologies_ru">Технологии</string>
     <string name="design_en">design</string>
@@ -93,4 +94,9 @@
     <string name="cancelTextBtn">Отмена</string>
     <string name="okTextBtn">ОК</string>
     <string name="saveTextBtn">Сохранить</string>
+    <string name="myCity">Днепропетровск</string>
+    <string name="title_activity_browser_news">BrowserNews</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_test">Test</string>
 </resources>

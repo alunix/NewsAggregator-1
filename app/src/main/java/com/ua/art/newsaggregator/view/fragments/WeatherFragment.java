@@ -60,19 +60,19 @@ public class WeatherFragment extends Fragment {
 
     private void viewImgWeather(String weather_type){
         if (weather_type.equals("ясно"))
-            weatherTypeImage.setImageResource(R.drawable.sunny39);
+            weatherTypeImage.setImageResource(R.drawable.sunny);
         else if (weather_type.equals("малооблачно"))
-            weatherTypeImage.setImageResource(R.drawable.cloudy19);
+            weatherTypeImage.setImageResource(R.drawable.partly_cloudy);
         else if (weather_type.equals("переменная облачность"))
-            weatherTypeImage.setImageResource(R.drawable.cloudy19);
+            weatherTypeImage.setImageResource(R.drawable.partly_cloudy);
         else if (weather_type.equals("облачно"))
             weatherTypeImage.setImageResource(R.drawable.cloudy);
         else if (weather_type.equals("облачно, дождь, гроза"))
-            weatherTypeImage.setImageResource(R.drawable.rainy24);
+            weatherTypeImage.setImageResource(R.drawable.rain_storm);
         else if (weather_type.equals("облачно, дождь"))
-            weatherTypeImage.setImageResource(R.drawable.rainy24);
+            weatherTypeImage.setImageResource(R.drawable.rain);
         else if (weather_type.equals("дождь"))
-            weatherTypeImage.setImageResource(R.drawable.rainy24);
+            weatherTypeImage.setImageResource(R.drawable.rain);
     }
 
 

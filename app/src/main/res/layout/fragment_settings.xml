@@ -23,7 +23,7 @@
                 android:text="loginText"
                 android:id="@+id/loginText"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="30dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -32,25 +32,17 @@
                 android:layout_gravity="right" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="exit"
                 android:id="@+id/btnExitLogin"
-                android:layout_gravity="center_horizontal" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="colorButton"
-                android:id="@+id/colorButton"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp" />
+                android:layout_margin="15dp" />
 
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="443dp"
                 android:id="@+id/settingsListView"
-                android:layout_marginTop="20dp"
                 android:layout_weight="0.32" />
 
         </LinearLayout>

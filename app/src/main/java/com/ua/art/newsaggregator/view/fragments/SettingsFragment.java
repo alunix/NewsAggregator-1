@@ -48,8 +48,6 @@ public class SettingsFragment extends Fragment {
 
         Button btnExit = (Button)view.findViewById(R.id.btnExitLogin);
         btnExit.setOnClickListener(pressBtn);
-        Button colorBtn = (Button)view.findViewById(R.id.colorButton);
-        colorBtn.setOnClickListener(pressBtn);
         loginText = (TextView)view.findViewById(R.id.loginText);
         //settingsList = new ArrayList<>();
         settingsItemName = getResources().getStringArray(R.array.setings);
@@ -78,9 +76,6 @@ public class SettingsFragment extends Fragment {
                     Preferences.savePassword("");
                     //Toast.makeText(context, "text", Toast.LENGTH_SHORT).show();
                     Log.v(TAG, "Exit");
-                    break;
-                case R.id.colorButton:
-                    //R.color.window_background_news =
                     break;
                 default:
                     Log.v(TAG, "No exit");

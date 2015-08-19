@@ -6,61 +6,79 @@
     android:gravity="center_horizontal">
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView" >
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/temperaturaTodayText"
-                    android:id="@+id/temperTodayText" />
+                    android:id="@+id/temperTodayText"
+                    android:layout_gravity="top|right"
+                    android:textSize="@dimen/sizeTwxtWeather"
+                    android:textIsSelectable="false" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="factTemperatureText"
+                    android:text="0"
                     android:id="@+id/factTemperatureText"
                     android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/sizeTwxtWeather"
                     android:layout_marginTop="50dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="°C"
-                    android:id="@+id/textView" />
+                    android:id="@+id/textView"
+                    android:textSize="@dimen/sizeTwxtWeather" />
 
             </LinearLayout>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/weatherTypeImage" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="sunText"
+                android:text="@string/myCity"
+                android:id="@+id/City"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/sunText"
                 android:layout_gravity="center_horizontal" />
 
-            <Button
+            <ImageView
                 android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/weatherTypeImage"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp" />
+
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/wearherBtn"
                 android:id="@+id/wearherBtn"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="15dp" />
+
         </LinearLayout>
     </ScrollView>
 
