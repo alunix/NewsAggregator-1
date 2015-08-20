@@ -84,19 +84,23 @@ public class NewsListFragment extends Fragment {
         lv = (ListView) getActivity().findViewById(R.id.news_list);
 //        new GetNews().execute();
 
+        downloadNews();
+    }
 
+    //TODO неправильно работает
+    private void downloadNews(){
+        if (!Settings.nameSelectCategory.isEmpty()){
+            for (String category : Settings.nameSelectCategory){
+                new QueryServerPushRss(
+                        requestModuleId,
+                        "news_" + category,
+                        "news_" + category + "_liga");
 
-        //--------------download NEWS------------------------------------------download NEWS---------------------------
-        int category = 0;
-        new QueryServerPushRss(
-                requestModuleId,
-                "news_" + Settings.nameSelectCategory.get(category),
-                "news_" + Settings.nameSelectCategory.get(category) + "_liga");
-
-        new GetNews(requestModuleId, "news_" + Settings.nameSelectCategory.get(category),
-                "news_" + Settings.nameSelectCategory.get(category) + "_liga",
-                "-1", String.valueOf(Settings.sumItemOneCategory), requestOlder).execute();
-        //------------------------------------------------download NEWS------------------------------------------------
+                new GetNews(requestModuleId, "news_" + category,
+                        "news_" + category + "_liga",
+                        "-1", String.valueOf(Settings.sumItemOneCategory), requestOlder).execute();
+            }
+        }
     }
 
     private class GetNews extends AsyncTask<Void, Void, Void> {
