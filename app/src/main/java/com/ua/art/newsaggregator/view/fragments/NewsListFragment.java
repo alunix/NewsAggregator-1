@@ -89,7 +89,7 @@ public class NewsListFragment extends Fragment {
 
     //TODO неправильно работает
     private void downloadNews(){
-        if (!Settings.nameSelectCategory.isEmpty()){
+        if (newsList.isEmpty()){
             for (String category : Settings.nameSelectCategory){
                 new QueryServerPushRss(
                         requestModuleId,
@@ -101,6 +101,11 @@ public class NewsListFragment extends Fragment {
                         "-1", String.valueOf(Settings.sumItemOneCategory), requestOlder).execute();
             }
         }
+    }
+
+    private void pullSQLiteNews(){
+        DbManager dbManager = new DbManager(context);
+        dbManager.selectDbNews(newsList);
     }
 
     private class GetNews extends AsyncTask<Void, Void, Void> {
@@ -171,9 +176,7 @@ public class NewsListFragment extends Fragment {
                         newsList.add(contact);
                         //checkingMatch(contact);
                     }
-
-                    DbManager dbManager = new DbManager(context);
-                    dbManager.saveDbNews(newsList);
+                    //new DbManager(context).saveDbNews(newsList);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -181,20 +184,19 @@ public class NewsListFragment extends Fragment {
             } else {
                 Log.e("ServiceHandler", "Couldn't get any data from the url");
             }
-
             return null;
         }
 
         // проверка на совпадение и добавление в БД и в ArrayList
-        private void checkingMatch(HashMap<String, String> contact){
-            for (HashMap<String, String> nList : Settings.newsList){
-                if(nList.get(TAG_ID) == contact.get(TAG_ID)){
-                    return;
-                }
-            }
-            Settings.newsList.add(contact);             // add newsList news Item (Settings)
-            newsList.add(contact);
-        }
+//        private void checkingMatch(HashMap<String, String> contact){
+//            for (HashMap<String, String> nList : Settings.newsList){
+//                if(nList.get(TAG_ID) == contact.get(TAG_ID)){
+//                    return;
+//                }
+//            }
+//            Settings.newsList.add(contact);             // add newsList news Item (Settings)
+//            newsList.add(contact);
+//        }
 
         private String checkString(String sTag){
             if (sTag.equals("null"))

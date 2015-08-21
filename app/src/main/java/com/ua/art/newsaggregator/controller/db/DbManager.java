@@ -107,7 +107,7 @@ public class DbManager {
 
         // connect to the database
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Log.d(LOG_TAG, "--- Insert in mytable: ---");
+        Log.d(LOG_TAG, "--- select in mytable: ---");
 
         // делаем запрос всех данных из таблицы mytable, получаем Cursor
         Cursor c = db.query("mytable", null, null, null, null, null, null);
