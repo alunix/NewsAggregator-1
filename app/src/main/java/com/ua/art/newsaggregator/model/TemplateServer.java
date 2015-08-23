@@ -28,7 +28,7 @@ public class TemplateServer {
         return param;
     }
 
-    public static String requestJsonNews()
+    public static String requestJsonNews()  // pull
     {
         String param = "{}";
         return param;

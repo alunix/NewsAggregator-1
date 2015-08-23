@@ -39,7 +39,42 @@
         <item>6 часов</item>
         <item>12 часов</item>
     </string-array>
-    
+
+
+    <string name="news_all_en">All news</string>
+    <string name="news_all_ru">Все новости</string>
+    <string name="news_articles_en">Articles</string>
+    <string name="news_articles_ru">Статьи</string>
+    <string name="news_capital_en">Capital</string>
+    <string name="news_capital_ru">Столица</string>
+    <string name="news_culture_en">Culture</string>
+    <string name="news_culture_ru">Культура</string>
+    <string name="news_economics_en">Economics</string>
+    <string name="news_economics_ru">Экономика</string>
+    <string name="news_interview_en">Interview</string>
+    <string name="news_interview_ru">Интервью</string>
+    <string name="news_news_en">News</string>
+    <string name="news_news_ru">Новости</string>
+    <string name="news_photo_en">Photographic</string>
+    <string name="news_photo_ru">Фотоматериалы</string>
+    <string name="news_politics_en">Politics</string>
+    <string name="news_politics_ru">Политика</string>
+    <string name="news_smi_en">Foreign press</string>
+    <string name="news_smi_ru">Зарубежная пресса</string>
+    <string name="news_society_en">Society</string>
+    <string name="news_society_ru">Общество</string>
+    <string name="news_sport_en">Sport</string>
+    <string name="news_sport_ru">Спорт</string>
+    <string name="news_top_en">Main materials</string>
+    <string name="news_top_ru">Главные материалы</string>
+    <string name="news_ua_all_en">Ukrainian version. All materials</string>
+    <string name="news_ua_all_ru">Украинская версия. Все материалы</string>
+    <string name="news_ua_top_en">Ukrainian version. Main materials</string>
+    <string name="news_ua_top_ru">Украинская версия. Главные материалы</string>
+    <string name="news_video_en">Video</string>
+    <string name="news_video_ru">Видеоматериалы</string>
+    <string name="news_world_en">World</string>
+    <string name="news_world_ru">Мир</string>
 
     <string name="news_en">news</string>
     <string name="news_ru">Новости</string>

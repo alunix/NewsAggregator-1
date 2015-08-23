@@ -3,6 +3,9 @@ package com.ua.art.newsaggregator.controller.db;
 import com.ua.art.newsaggregator.model.News;
 import com.ua.art.newsaggregator.service.Settings;
 
+/**
+ * Counting the number of output news on the selected category
+ * */
 public class CountSelectCategory {
 
     public CountSelectCategory() {
@@ -21,7 +24,7 @@ public class CountSelectCategory {
 //                        String.valueOf(key.getName()), String.valueOf(key.getName())
 //                );
                 //Settings.selectCategory.add(String.valueOf(key.getName()));
-                Settings.nameSelectCategory.add(String.valueOf(key.getName()));
+                Settings.nameSelectCategory.add(String.valueOf(key.getIdName()));
             }
         }
     }

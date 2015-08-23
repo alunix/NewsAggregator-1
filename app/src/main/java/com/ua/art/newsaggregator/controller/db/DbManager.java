@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.ua.art.newsaggregator.controller.Dictionary;
 import com.ua.art.newsaggregator.controller.HttpClient;
+import com.ua.art.newsaggregator.model.Dictionary;
 import com.ua.art.newsaggregator.model.TemplateServer;
 
 import org.json.JSONArray;
@@ -248,7 +248,7 @@ public class DbManager {
                                 contact.put(TAG_MODULEID_SOURCE, checkString(moduleIdS));
                                 contact.put(TAG_CATEGORYID_SOURCE, checkString(categoryIdS));
                                 sourceList.add(contact);
-                                Dictionary.sourceList = sourceList;
+                                //Dictionary.sourceList = sourceList;
 
                                 Collections.copy(Dictionary.sourceList, sourceList);    // copy to Dictionary (Settings)
 
