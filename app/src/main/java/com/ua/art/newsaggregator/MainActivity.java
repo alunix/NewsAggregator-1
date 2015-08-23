@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.ua.art.newsaggregator.adapter.MainAdapter;
+import com.ua.art.newsaggregator.controller.SynchroDictionaryAS;
 import com.ua.art.newsaggregator.controller.db.CountSelectCategory;
 import com.ua.art.newsaggregator.smartDroid.CategoryStatus;
 import com.ua.art.newsaggregator.view.LoginActivity;
@@ -27,8 +28,10 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+       // Synchronization android server categories
+        SynchroDictionaryAS synchroDictionaryAS = new SynchroDictionaryAS();
 
-        //DbManager dbManager = new DbManager(this);
+//        DbManager dbManager = new DbManager(this);
 
 //        Intent intent = new Intent(this, BrowserNews.class);
 //        startActivity(intent);

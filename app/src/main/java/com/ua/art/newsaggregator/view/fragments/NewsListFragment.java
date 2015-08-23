@@ -34,6 +34,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Activiti fragment to display a list of news server
+ * */
 public class NewsListFragment extends Fragment {
 
     private ProgressDialog progressDialog;
@@ -64,6 +67,7 @@ public class NewsListFragment extends Fragment {
     private static final String LOG_TAG = "date";
 
     private ListView lv;
+//    ImageView imgLike;
     private JSONArray news = null;
     private ArrayList<HashMap<String, String>> newsList;
 
@@ -83,9 +87,26 @@ public class NewsListFragment extends Fragment {
         newsList = new ArrayList<>();
         lv = (ListView) getActivity().findViewById(R.id.news_list);
 //        new GetNews().execute();
+//        imgLike = (ImageView)getActivity().findViewById(R.id.btnLike);
+//        imgLike.setOnClickListener(pressBtn);
 
         downloadNews();
     }
+
+//    private View.OnClickListener pressBtn = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            switch (v.getId()){
+//                case R.id.btnLike:
+//                    //Toast.makeText(context, "text", Toast.LENGTH_SHORT).show();
+//                    Log.v(LOG_TAG, "setOnClick ImageView");
+//                    break;
+//                default:
+//                    Log.v(LOG_TAG, "No press");
+//                    break;
+//            }
+//        }
+//    };
 
     //TODO неправильно работает
     private void downloadNews(){
@@ -93,11 +114,10 @@ public class NewsListFragment extends Fragment {
             for (String category : Settings.nameSelectCategory){
                 new QueryServerPushRss(
                         requestModuleId,
-                        "news_" + category,
-                        "news_" + category + "_liga");
-
-                new GetNews(requestModuleId, "news_" + category,
-                        "news_" + category + "_liga",
+                        category,
+                        category + "_liga");
+                new GetNews(requestModuleId, category,
+                        category + "_liga",
                         "-1", String.valueOf(Settings.sumItemOneCategory), requestOlder).execute();
             }
         }
@@ -162,13 +182,19 @@ public class NewsListFragment extends Fragment {
                         String categoryId = checkString(c.getString(TAG_CATEGORYID));
                         String sourceId = checkString(c.getString(TAG_SOURCEID));
 
+                        if ((name == null)||(description == null)||(link == null)
+                                ||(name == "")||(description == "")||(link == "")
+                                ||(name == " ")||(description == " ")||(link == " "))
+                            continue;
+
+                        //String date = filterString(newsList.get(TAG_PUBDATE), " ", " ");
                         HashMap<String, String> contact = new HashMap<>();
                         contact.put(TAG_ID, checkString(id));
                         contact.put(TAG_NAME, name);
                         contact.put(TAG_LINK, link);
                         contact.put(TAG_DESCRIPTION, description);
                         contact.put(TAG_IMAGE, image);
-                        contact.put(TAG_PUBDATE, pubDate);
+                        contact.put(TAG_PUBDATE, filterString(pubDate, " ", " "));
                         contact.put(TAG_TEXT, text);
                         contact.put(TAG_MODULEID, moduleId);
                         contact.put(TAG_CATEGORYID, categoryId);
@@ -211,6 +237,7 @@ public class NewsListFragment extends Fragment {
 //            if (progressDialog.isShowing()){
 //                progressDialog.dismiss();
 //            }
+
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), newsList,
                     R.layout.item_list_news,
@@ -237,13 +264,9 @@ public class NewsListFragment extends Fragment {
 
                     String urlNews = newsList.get(position).get(TAG_LINK).toString();
 
-//                    Uri uriUrl = Uri.parse("http://www.google.com/");
                     Intent intentNews = new Intent(context,  BrowserNews.class);
                     intentNews.putExtra("urlNews", urlNews);
                     startActivity(intentNews);
-
-
-                    //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")));
                 }
             });
 
@@ -276,8 +299,15 @@ public class NewsListFragment extends Fragment {
                             + ", totalItemCount" + totalItemCount);
                 }
             });
-
         }
+    }
 
+    private String filterString(String strValue, String indexOf, String  lastIndexOf) {
+        if (strValue != null) {
+            if (strValue.charAt(0) != indexOf.charAt(0))
+                return (String) strValue.subSequence(
+                        strValue.indexOf(indexOf), strValue.lastIndexOf(lastIndexOf) + 1);
+        }
+        return strValue;
     }
 }
