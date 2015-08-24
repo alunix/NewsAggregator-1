@@ -3,6 +3,7 @@ package com.ua.art.newsaggregator.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.util.Log;
 import android.view.Gravity;
@@ -76,10 +77,10 @@ public class NewsTable {
     private View prepareButton(final News news) {
         final Button button = new Button(mContext);
         button.setText(mContext.getString(news.getRuResource()));
-
+        button.setTypeface(button.getTypeface(), Typeface.BOLD);
         //button.setTextColor(mContext.getResources().getColor(R.color.secondary_text_default_material_light));
         //button.setTextColor(0xff0000);
-        button.setShadowLayer(9, 1, 1, Color.rgb(44, 44, 44));
+        button.setShadowLayer(1, 0, 2, Color.rgb(250, 250, 0));
         // TODO установить свет вона текста
 
         int width = (mContext.getResources().getDisplayMetrics().widthPixels / COLUMNS)-20;

@@ -37,7 +37,9 @@
                 android:text="exit"
                 android:id="@+id/btnExitLogin"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="15dp" />
+                android:layout_margin="15dp"
+                android:singleLine="false"
+                android:nestedScrollingEnabled="false" />
 
             <ListView
                 android:layout_width="match_parent"
