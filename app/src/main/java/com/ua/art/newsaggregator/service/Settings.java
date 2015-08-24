@@ -29,8 +29,10 @@ public class Settings extends Activity {
 
     public static int maxNewsList = 30;
     public static int sumItemOneCategory = 10;
+    public static int nameSelectAllCategory;   // сколько все новостей загрузится за рас
     public static int maxIdItem = 0;
     public static int minIdItem = 0;
+    public static boolean updateNewsList = false;
 
     private SharedPreferences mSettings;
 

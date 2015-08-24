@@ -12,16 +12,20 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.ua.art.newsaggregator.adapter.MainAdapter;
 import com.ua.art.newsaggregator.controller.SynchroDictionaryAS;
 import com.ua.art.newsaggregator.controller.db.CountSelectCategory;
+import com.ua.art.newsaggregator.service.Settings;
 import com.ua.art.newsaggregator.smartDroid.CategoryStatus;
 import com.ua.art.newsaggregator.view.LoginActivity;
 import com.ua.art.newsaggregator.view.LoginActivityReg;
 
-
+/*
+* https://github.com/astuetz/PagerSlidingTabStrip
+* https://guides.codepath.com/android/Sliding-Tabs-with-PagerSlidingTabStrip#setup-onpagechangelistener
+* */
 public class MainActivity extends ActionBarActivity {
 
     private static final int LOGIN_ACTIVITY = 0;
 
-    final String LOG_TAG = "dbLogs";
+    final String LOG_TAG = "mainLogs";
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -82,6 +86,31 @@ public class MainActivity extends ActionBarActivity {
         pager.setAdapter(new MainAdapter(getSupportFragmentManager(), this));
         PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabs.setViewPager(pager);
+        tabs.setIndicatorColor(R.color.abc_secondary_text_material_light);
+        tabs.setIndicatorHeight(7);
+
+        tabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            // This method will be invoked when a new page becomes selected.
+            @Override
+            public void onPageSelected(int position) {
+                Log.d(LOG_TAG, "onPageSelected, position - " + position);
+                if (position == 0) Settings.updateNewsList = true;
+            }
+
+            // This method will be invoked when the current page is scrolled
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                Log.d(LOG_TAG, "onPageScrolled, position - " + position);
+            }
+
+            // Called when the scroll state changes:
+            // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
+            @Override
+            public void onPageScrollStateChanged(int state) {
+//                Log.d(LOG_TAG, "onPageScrollStateChanged, state - " + state);
+            }
+        });
     }
 
     @Override

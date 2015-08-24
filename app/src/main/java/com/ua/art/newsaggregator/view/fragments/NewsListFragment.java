@@ -108,8 +108,15 @@ public class NewsListFragment extends Fragment {
 //        }
 //    };
 
+    @Override
+    public void onStart() {
+        super.onStart();
+//        downloadNews();
+        Log.d(LOG_TAG, "onStart");
+    }
+
     //TODO неправильно работает
-    private void downloadNews(){
+    public void downloadNews(){
         if (newsList.isEmpty()){
             for (String category : Settings.nameSelectCategory){
                 new QueryServerPushRss(
@@ -120,6 +127,7 @@ public class NewsListFragment extends Fragment {
                         category + "_liga",
                         "-1", String.valueOf(Settings.sumItemOneCategory), requestOlder).execute();
             }
+//            Collections.shuffle(newsList);
         }
     }
 
@@ -237,6 +245,9 @@ public class NewsListFragment extends Fragment {
 //            if (progressDialog.isShowing()){
 //                progressDialog.dismiss();
 //            }
+//            if (newsList.size() < Settings.nameSelectAllCategory)
+//                return;
+//             Collections.shuffle(newsList);
 
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), newsList,
@@ -297,6 +308,20 @@ public class NewsListFragment extends Fragment {
                     Log.d(LOG_TAG, "scroll: firstVisibleItem = " + firstVisibleItem
                             + ", visibleItemCount" + visibleItemCount
                             + ", totalItemCount" + totalItemCount);
+//                    if (firstVisibleItem == totalItemCount - visibleItemCount){
+//
+//                        if (newsList.isEmpty()){
+//                            for (String category : Settings.nameSelectCategory){
+//                                new QueryServerPushRss(
+//                                        requestModuleId,
+//                                        category,
+//                                        category + "_liga");
+//                                new GetNews(requestModuleId, category,
+//                                        category + "_liga",
+//                                        "-1", String.valueOf(Settings.sumItemOneCategory), requestOlder).execute();
+//                            }
+//                        }
+//                    }
                 }
             });
         }

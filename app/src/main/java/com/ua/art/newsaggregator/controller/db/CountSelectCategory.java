@@ -30,8 +30,12 @@ public class CountSelectCategory {
     }
 
     public void countSumSelectCategory(){
-        if (Settings.nameSelectCategory.size() != 0)
+        if (Settings.nameSelectCategory.size() != 0){
             Settings.sumItemOneCategory = Settings.maxNewsList/Settings.nameSelectCategory.size();
+            Settings.nameSelectAllCategory = Settings.sumItemOneCategory * Settings.nameSelectCategory.size();
+        }
+
+
         else
             Settings.sumItemOneCategory = Settings.maxNewsList;
     }
