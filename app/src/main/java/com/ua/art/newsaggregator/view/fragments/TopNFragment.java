@@ -59,7 +59,7 @@ public class TopNFragment extends Fragment {
 
     private static final String LOG_TAG = "date";
 
-    private ListView lv;
+    private ListView lvTop;
     //    ImageView imgLike;
     private JSONArray news = null;
     private ArrayList<HashMap<String, String>> newsList;
@@ -78,20 +78,22 @@ public class TopNFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         newsList = new ArrayList<>();
-        lv = (ListView) getActivity().findViewById(R.id.top_list);
+        lvTop = (ListView) getActivity().findViewById(R.id.top_list);
+
+        downloadNews();
     }
 
     private void downloadNews(){
+        String category = "news_top";
         if (newsList.isEmpty()){
-            for (String category : Settings.nameSelectCategory){
-                new QueryServerPushRss(
-                        requestModuleId,
-                        "news_top",
-                        "news_top" + "_liga");
-                new GetNews(requestModuleId, category,
-                        "news_top" + "_liga",
-                        "-1", String.valueOf(Settings.sumItemOneCategory), requestOlder).execute();
-            }
+            new QueryServerPushRss(
+                    requestModuleId,
+                    category,
+                    category + "_liga");
+            new GetNews(requestModuleId, category,
+                    category + "_liga",
+                    "-1", String.valueOf(Settings.maxNewsList), requestOlder).execute();
+
 //            Collections.shuffle(newsList);
         }
     }
@@ -166,7 +168,7 @@ public class TopNFragment extends Fragment {
                         contact.put(TAG_TEXT, text);
                         contact.put(TAG_MODULEID, moduleId);
                         contact.put(TAG_CATEGORYID, categoryId);
-                        contact.put(TAG_SOURCEID, sourceId);
+                        contact.put(TAG_SOURCEID, (sourceId.indexOf("liga") != -1) ? "www.liga.net" : sourceId);
                         newsList.add(contact);
                         //checkingMatch(contact);
                     }
@@ -225,10 +227,10 @@ public class TopNFragment extends Fragment {
                             R.id.dateItemText
                     });
 
-            lv.setAdapter(adapter);
+            lvTop.setAdapter(adapter);
 
             // Click Item
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            lvTop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                     Log.d(LOG_TAG, "itemClick: position = " + position + ", id = " + id);
@@ -242,7 +244,7 @@ public class TopNFragment extends Fragment {
             });
 
             // Events for selection --------------------------------------------------------------
-            lv.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            lvTop.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> parent, View view,
                                            int position, long id) {
                     Log.d(LOG_TAG, "itemSelect: position = " + position + ", id = "
@@ -255,7 +257,7 @@ public class TopNFragment extends Fragment {
                 }
             });
             // Events for croll
-            lv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            lvTop.setOnScrollListener(new AbsListView.OnScrollListener() {
                 int a =0;
                 @Override
                 public void onScrollStateChanged(AbsListView absListView, int scrollState) {

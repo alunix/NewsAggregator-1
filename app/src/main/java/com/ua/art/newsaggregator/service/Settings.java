@@ -21,13 +21,16 @@ public class Settings extends Activity {
     //public static ArrayList<String> selectCategory = new ArrayList<>();
     public static ArrayList<String> nameSelectCategory = new ArrayList<>();
 
+    public static final int PRIORITY_CATEGORY_SELECT = 2;
+    public static final int PRIORITY_ITEM_INPUT = 1;
+
     public static ArrayList<HashMap<String, int[]>> selectCountCategory = new ArrayList<>();
 
     public static ArrayList<HashMap<String, String>> gravityCategory = new ArrayList<>();
 
     public static ArrayList<HashMap<String, String>> newsList = new ArrayList<>();  // news Item
 
-    public static int maxNewsList = 30;
+    public static int maxNewsList = 20;
     public static int sumItemOneCategory = 10;
     public static int nameSelectAllCategory;   // сколько все новостей загрузится за рас
     public static int maxIdItem = 0;

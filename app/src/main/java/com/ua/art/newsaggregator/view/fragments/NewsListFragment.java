@@ -66,10 +66,13 @@ public class NewsListFragment extends Fragment {
 
     private static final String LOG_TAG = "date";
 
+    static String srcId;
+
     private ListView lv;
 //    ImageView imgLike;
     private JSONArray news = null;
     private ArrayList<HashMap<String, String>> newsList;
+    private boolean flagAdapterListGo = false;
 
     public NewsListFragment(Context context) {
         this.context = context;
@@ -111,6 +114,8 @@ public class NewsListFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+//        newsList.clear();
+
 //        downloadNews();
         Log.d(LOG_TAG, "onStart");
     }
@@ -127,7 +132,8 @@ public class NewsListFragment extends Fragment {
                         category + "_liga",
                         "-1", String.valueOf(Settings.sumItemOneCategory), requestOlder).execute();
             }
-//            Collections.shuffle(newsList);
+            //Collections.shuffle(newsList);
+            flagAdapterListGo = true;
         }
     }
 
@@ -206,7 +212,7 @@ public class NewsListFragment extends Fragment {
                         contact.put(TAG_TEXT, text);
                         contact.put(TAG_MODULEID, moduleId);
                         contact.put(TAG_CATEGORYID, categoryId);
-                        contact.put(TAG_SOURCEID, sourceId);
+                        contact.put(TAG_SOURCEID, (sourceId.indexOf("liga") != -1) ? "www.liga.net" : sourceId);
                         newsList.add(contact);
                         //checkingMatch(contact);
                     }
@@ -245,11 +251,22 @@ public class NewsListFragment extends Fragment {
 //            if (progressDialog.isShowing()){
 //                progressDialog.dismiss();
 //            }
-//            if (newsList.size() < Settings.nameSelectAllCategory)
+            //TODO переделать фильтр
+//            if (flagAdapterListGo == false)
 //                return;
+//            else
+//                flagAdapterListGo = false;
 //             Collections.shuffle(newsList);
 
-            ListAdapter adapter = new SimpleAdapter(
+
+
+//            if (TAG_SOURCEID.indexOf("liga") != -1)
+//            {
+//                srcId = "www.liga.net";
+//            }
+//            else srcId = TAG_SOURCEID;
+
+                    ListAdapter adapter = new SimpleAdapter(
                     getActivity(), newsList,
                     R.layout.item_list_news,
                     new String[]{

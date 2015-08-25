@@ -10,7 +10,6 @@ import com.ua.art.newsaggregator.view.fragments.ChooseCategoryFragment;
 import com.ua.art.newsaggregator.view.fragments.NewsListFragment;
 import com.ua.art.newsaggregator.view.fragments.SettingsFragment;
 import com.ua.art.newsaggregator.view.fragments.TopNFragment;
-import com.ua.art.newsaggregator.view.fragments.WeatherFragment;
 
 public class MainAdapter extends FragmentPagerAdapter {
     private Context context;
@@ -25,41 +24,41 @@ public class MainAdapter extends FragmentPagerAdapter {
         switch (position){
             case 0:
                 return "Новости";
-            case 2:
-                return "Top-20";
             case 1:
                 return "Категории";
+            case 2:
+                return "Топ-20";
+            case 3:
+                return "Настройки";
 //            case 3:
 //                return "Droid News";
-            case 3:
-                return "Погода";
-            case 4:
-                return "Настройки";
+//            case 3:
+//                return "Погода";
              default:
                 return "Новости";
         }
     }
     @Override
     public int getCount() {
-        return 5;
+        return 4;
     }
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0: {
+            case 0:
                 Log.d(LOG_TAG, "onResume");
                 return new NewsListFragment(context);  //return new NewsListFragment();
-            }case 2:{
-                return new TopNFragment();
-            }case 1: {
+            case 1:
                 return new ChooseCategoryFragment();
-//            }case 3:{
-//                return new DroidNewsFragment();
-            }case 3:{
-                return new WeatherFragment();
-            }case 4:{
+            case 2:
+                return new TopNFragment();
+            case 3:
                 return new SettingsFragment();
-            } default:
+//            case 3:
+//                return new DroidNewsFragment();
+//            case 3:
+//                return new WeatherFragment();
+            default:
                 Log.d(LOG_TAG, "default");
                 return new NewsListFragment(context);
         }

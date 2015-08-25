@@ -80,7 +80,7 @@ public class NewsTable {
         button.setTypeface(button.getTypeface(), Typeface.BOLD);
         //button.setTextColor(mContext.getResources().getColor(R.color.secondary_text_default_material_light));
         //button.setTextColor(0xff0000);
-        button.setShadowLayer(1, 0, 2, Color.rgb(250, 250, 0));
+        button.setShadowLayer(1, 0, 2, Color.rgb(255, 255, 255));
         // TODO установить свет вона текста
 
         int width = (mContext.getResources().getDisplayMetrics().widthPixels / COLUMNS)-20;
